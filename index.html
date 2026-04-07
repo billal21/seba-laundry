@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>লন্ডী এন্ড ড্রাই ক্লিনার্স | নয়ানগর, ঢাকা</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f9f4; color: #1e2f2e; line-height: 1.5; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .header { background: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 16px 0; }
+    .logo h1 { font-size: 1.6rem; color: #0b5e4f; }
+    .logo p { font-size: 0.85rem; color: #2c7a6e; }
+    .nav a { margin-left: 25px; text-decoration: none; color: #1e2f2e; font-weight: 600; }
+    @media (max-width: 680px) { .header-inner { flex-direction: column; gap: 10px; } .nav a { margin: 0 12px; font-size: 0.9rem; } }
+    .hero { background: linear-gradient(135deg, #d9f0ec, #bde5df); padding: 60px 0; text-align: center; }
+    .hero h2 { font-size: 2.3rem; color: #05445b; margin-bottom: 15px; }
+    .hero p { font-size: 1.2rem; max-width: 650px; margin: 0 auto 25px; }
+    .btn { display: inline-block; background-color: #0b8b74; color: white; padding: 12px 32px; border-radius: 40px; text-decoration: none; font-weight: bold; }
+    .btn-wa { background-color: #25D366; margin-left: 12px; }
+    .section { padding: 60px 0; }
+    .section-title { text-align: center; font-size: 2rem; margin-bottom: 40px; color: #0b5e4f; }
+    .cards { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
+    .card { background: white; border-radius: 24px; padding: 28px 20px; text-align: center; width: 260px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+    .card-icon { font-size: 3rem; margin-bottom: 15px; }
+    .card h3 { margin-bottom: 12px; }
+    .price { font-weight: bold; color: #0b8b74; font-size: 1.2rem; margin: 12px 0; }
+    .price-list { background: #fef9e6; }
+    .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; max-width: 800px; margin: 0 auto; }
+    .price-item { background: white; padding: 14px 20px; border-radius: 40px; display: flex; justify-content: space-between; }
+    .item-price { color: #0b8b74; font-weight: bold; }
+    .testimonial { background: white; border-radius: 32px; padding: 30px; max-width: 700px; margin: 0 auto; text-align: center; }
+    .contact-grid { display: flex; flex-wrap: wrap; gap: 40px; background: #eaf7f3; padding: 30px; border-radius: 32px; }
+    .contact-info { flex: 1; }
+    .contact-info p { margin: 12px 0; }
+    .map-placeholder { flex: 1; background: #cfdfda; border-radius: 20px; padding: 20px; text-align: center; }
+    .map-placeholder iframe { width: 100%; height: 220px; border: 0; border-radius: 12px; }
+    footer { background: #0b5e4f; color: white; text-align: center; padding: 24px 0; margin-top: 20px; }
+    .wa-float { position: fixed; bottom: 25px; right: 25px; background-color: #25D366; border-radius: 50px; padding: 12px 20px; color: white; font-weight: bold; text-decoration: none; z-index: 99; }
+    .order-btn-fixed { position: fixed; bottom: 85px; right: 25px; background-color: #0b8b74; color: white; border: none; border-radius: 50px; padding: 14px 24px; font-size: 1rem; font-weight: bold; cursor: pointer; z-index: 99; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    .order-btn-fixed:hover { background-color: #096b59; }
+    .history-btn-fixed { position: fixed; bottom: 145px; right: 25px; background-color: #3d5a80; color: white; border: none; border-radius: 50px; padding: 14px 24px; font-size: 1rem; font-weight: bold; cursor: pointer; z-index: 99; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    .history-btn-fixed:hover { background-color: #2c4460; }
+
+    /* ===== মডাল বেস ===== */
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index: 1000; }
+
+    /* ===== ক্যাশ মেমো ===== */
+    .cash-memo { background: white; max-width: 580px; width: 97%; border-radius: 12px; padding: 20px; box-shadow: 0 20px 35px rgba(0,0,0,0.3); font-family: 'Courier New', monospace; max-height: 93vh; overflow-y: auto; }
+    .memo-header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 15px; }
+    .shop-name-memo { font-size: 1.3rem; font-weight: bold; color: #0b5e4f; }
+    .memo-info-row { display: flex; justify-content: space-between; align-items: center; margin: 8px 0; padding: 5px 0; border-bottom: 1px dashed #ccc; }
+    .memo-label { font-weight: bold; white-space: nowrap; margin-right: 8px; }
+    .customer-input { border: 1px solid #ccc; padding: 5px 8px; border-radius: 4px; width: 65%; font-family: 'Segoe UI', sans-serif; }
+
+    /* সার্ভিস সেকশন */
+    .service-section { margin: 14px 0; padding: 10px; background: #f0f8ff; border-radius: 8px; border: 1px solid #b0d4e8; }
+    .service-section-title { font-weight: bold; font-size: 0.9rem; margin-bottom: 8px; color: #0b5e4f; }
+    .service-type-row { display: flex; gap: 18px; margin-bottom: 10px; flex-wrap: wrap; }
+    .service-type-row label { display: flex; align-items: center; gap: 5px; font-weight: bold; cursor: pointer; padding: 5px 10px; border: 2px solid #ccc; border-radius: 20px; font-size: 0.85rem; transition: all 0.2s; }
+    .service-type-row label.active-iron { border-color: #e67e22; background: #fef9e6; color: #c0392b; }
+    .service-type-row label.active-wash { border-color: #2980b9; background: #eaf3fb; color: #1a5276; }
+    .service-type-row label.active-dry { border-color: #8e44ad; background: #f5eefa; color: #6c3483; }
+
+    /* আইটেম টেবিল */
+    .items-table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+    .items-table th, .items-table td { border: 1px solid #000; padding: 6px 4px; font-size: 0.82rem; }
+    .items-table th { background: #f0f0f0; text-align: center; }
+    .items-table td { text-align: center; }
+    .items-table td:first-child { text-align: left; }
+    .item-name-input { width: 95px; border: 1px solid #ccc; border-radius: 3px; padding: 3px; font-size: 0.8rem; }
+    .item-qty-input, .item-price-input { width: 55px; text-align: center; border: 1px solid #ccc; border-radius: 3px; padding: 3px; font-size: 0.8rem; }
+    .remove-item-btn { background: none; border: none; color: red; cursor: pointer; font-size: 1.1rem; }
+    .total-row { display: flex; justify-content: space-between; font-weight: bold; font-size: 1.2rem; margin: 12px 0; padding-top: 10px; border-top: 2px solid #000; }
+    .memo-footer { text-align: center; margin-top: 15px; font-size: 0.7rem; border-top: 1px dashed #ccc; padding-top: 8px; }
+    .action-buttons { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+    .memo-btn { flex: 1; padding: 10px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 0.9rem; min-width: 80px; }
+    .print-memo { background: #0b5e4f; color: white; }
+    .whatsapp-memo { background: #25D366; color: white; }
+    .close-memo { background: #dc3545; color: white; }
+    .save-memo { background: #e67e22; color: white; }
+    .add-item-btn { background: #0b8b74; color: white; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; margin-bottom: 8px; font-size: 0.85rem; }
+
+    /* ডেলিভারি স্ট্যাটাস */
+    .delivery-row { display: flex; align-items: center; gap: 10px; margin: 10px 0; padding: 8px; background: #fff8e1; border-radius: 6px; border: 1px solid #f0c060; }
+    .delivery-row label { font-weight: bold; font-size: 0.88rem; }
+    .delivery-badge-pending { background: #f39c12; color: white; padding: 3px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: bold; }
+    .delivery-badge-done { background: #27ae60; color: white; padding: 3px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: bold; }
+    .delivery-toggle { background: none; border: 2px solid #27ae60; color: #27ae60; padding: 4px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.8rem; }
+    .delivery-toggle:hover { background: #27ae60; color: white; }
+
+    /* ===== ইতিহাস মডাল ===== */
+    .history-modal-inner { background: white; max-width: 700px; width: 97%; border-radius: 12px; padding: 20px; box-shadow: 0 20px 35px rgba(0,0,0,0.3); max-height: 93vh; overflow-y: auto; font-family: 'Segoe UI', sans-serif; }
+    .history-modal-inner h2 { text-align: center; color: #0b5e4f; margin-bottom: 15px; font-size: 1.3rem; }
+    .history-tabs { display: flex; gap: 8px; margin-bottom: 15px; }
+    .history-tab { flex: 1; padding: 8px; border: 2px solid #0b5e4f; background: white; color: #0b5e4f; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+    .history-tab.active { background: #0b5e4f; color: white; }
+    .search-bar { display: flex; gap: 8px; margin-bottom: 12px; }
+    .search-bar input { flex: 1; padding: 8px 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.9rem; }
+    .filter-row { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+    .filter-btn { padding: 5px 14px; border: 2px solid #ccc; background: white; border-radius: 20px; cursor: pointer; font-size: 0.82rem; font-weight: bold; }
+    .filter-btn.active-all { border-color: #0b5e4f; background: #0b5e4f; color: white; }
+    .filter-btn.active-pending { border-color: #f39c12; background: #f39c12; color: white; }
+    .filter-btn.active-done { border-color: #27ae60; background: #27ae60; color: white; }
+    .memo-card { background: #f9f9f9; border: 1px solid #ddd; border-radius: 10px; padding: 12px; margin-bottom: 10px; }
+    .memo-card-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+    .memo-card-title { font-weight: bold; font-size: 0.95rem; }
+    .memo-card-meta { font-size: 0.78rem; color: #666; }
+    .memo-card-actions { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+    .btn-sm { padding: 4px 10px; border: none; border-radius: 4px; cursor: pointer; font-size: 0.78rem; font-weight: bold; }
+    .btn-view { background: #0b8b74; color: white; }
+    .btn-deliver { background: #27ae60; color: white; }
+    .btn-delete { background: #dc3545; color: white; }
+    .btn-close-history { background: #dc3545; color: white; padding: 8px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 12px; float: right; }
+    .no-memo-msg { text-align: center; color: #999; padding: 30px; font-size: 1rem; }
+    .history-lifetime-note { text-align: center; background: #e8f4f8; padding: 8px; border-radius: 6px; font-size: 0.8rem; color: #555; margin-bottom: 10px; }
+
+    /* প্রিন্ট ভিউ মডাল */
+    .view-memo-modal-inner { background: white; max-width: 550px; width: 97%; border-radius: 12px; padding: 20px; box-shadow: 0 20px 35px rgba(0,0,0,0.3); max-height: 93vh; overflow-y: auto; font-family: 'Courier New', monospace; }
+
+    @media (max-width: 550px) {
+      .hero h2 { font-size: 1.6rem; }
+      .item-name-input { width: 70px; }
+      .item-qty-input, .item-price-input { width: 42px; }
+      .service-type-row { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="https://wa.me/8801XXXXXXXXX?text=আমি%20আপনার%20লন্ড্রি%20সেবা%20নিতে%20চাই" class="wa-float" target="_blank">📲 হোয়াটসঅ্যাপ</a>
+<button id="openCashMemoBtn" class="order-btn-fixed">🧾 ক্যাশ মেমো</button>
+<button id="openHistoryBtn" class="history-btn-fixed">📋 মেমো ইতিহাস</button>
+
+<header class="header">
+  <div class="container header-inner">
+    <div class="logo">
+      <h1>লন্ডী এন্ড ড্রাই ক্লিনার্স</h1>
+      <p>নয়ানগর, Sontek Main Rd, Dhaka — নিশ্চিন্তে পোশাক দিন, নির্ভার থাকুন</p>
+    </div>
+    <div class="nav">
+      <a href="#">হোম</a>
+      <a href="#services">সেবা</a>
+      <a href="#prices">মূল্য</a>
+      <a href="#contact">যোগাযোগ</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h2>পেশাদার লন্ড্রি & ড্রাই ক্লিনিং</h2>
+    <p>আপনার মূল্যবান পোশাকের যত্ন নিই আধুনিক প্রযুক্তিতে। ফ্রি পিকআপ ও ডেলিভারি সেবা!</p>
+    <a href="https://wa.me/8801XXXXXXXXX?text=আমি%20বুকিং%20করতে%20চাই" class="btn" target="_blank">অনলাইন বুকিং</a>
+    <a href="tel:+8801XXXXXXXXX" class="btn btn-wa">📞 কল করুন</a>
+  </div>
+</section>
+
+<div class="container section" id="services">
+  <h2 class="section-title">আমাদের সেবাসমূহ</h2>
+  <div class="cards">
+    <div class="card"><div class="card-icon">🔥👕</div><h3>আয়রন সার্ভিস</h3><div class="price">শার্ট/প্যান্ট – ১০/-</div><p>পেশাদার ইস্ত্রি সেবা</p></div>
+    <div class="card"><div class="card-icon">👕🧺</div><h3>ওয়াশ সার্ভিস</h3><div class="price">শার্ট/প্যান্ট – ৫০/-</div><p>ধোয়া, শুকানো ও পরিষ্কার</p></div>
+    <div class="card"><div class="card-icon">🧥✨</div><h3>ড্রাই ক্লিনিং</h3><div class="price">কোট – ২৫০/- | কম্বল – ৩৫০/-</div><p>রাসায়নিক প্রক্রিয়ায় নিরাপদ ক্লিনিং</p></div>
+    <div class="card"><div class="card-icon">🏠🚚</div><h3>ফ্রি পিকআপ & ডেলিভারি</h3><div class="price">ন্যূনতম ৫ পিস অর্ডারে</div><p>আপনার দরজায় সেবা</p></div>
+  </div>
+</div>
+
+<div class="price-list section" id="prices">
+  <div class="container">
+    <h2 class="section-title">মূল্য তালিকা (প্রতি পিস)</h2>
+    <div class="price-grid">
+      <div class="price-item"><span>শার্ট/প্যান্ট (আয়রন)</span><span class="item-price">১০ টাকা</span></div>
+      <div class="price-item"><span>শার্ট/প্যান্ট (ওয়াশ)</span><span class="item-price">৫০ টাকা</span></div>
+      <div class="price-item"><span>কোট (আয়রন)</span><span class="item-price">৫০ টাকা</span></div>
+      <div class="price-item"><span>কোট (ওয়াশ/ড্রাই ক্লিন)</span><span class="item-price">২৫০ টাকা</span></div>
+      <div class="price-item"><span>কম্বল (ওয়াশ)</span><span class="item-price">৩৫০ টাকা</span></div>
+      <div class="price-item"><span>পাঞ্জাবি/কামিজ (আয়রন)</span><span class="item-price">১০ টাকা</span></div>
+      <div class="price-item"><span>পাঞ্জাবি/কামিজ (ওয়াশ)</span><span class="item-price">৫০ টাকা</span></div>
+      <div class="price-item"><span>শাড়ি (ড্রাই ক্লিন)</span><span class="item-price">১৫০ টাকা</span></div>
+    </div>
+    <p style="text-align:center;margin-top:28px;">⭐ ৫ পিসের বেশি অর্ডারে ফ্রি হোম ডেলিভারি ⭐</p>
+  </div>
+</div>
+
+<div class="container section">
+  <h2 class="section-title">গ্রাহকরা যা বলেন</h2>
+  <div class="testimonial">
+    <p>"লন্ডী এন্ড ড্রাই ক্লিনার্স থেকে নিয়মিত লন্ড্রি করাই। সময়মত ডেলিভারি, পোশাক অনেক পরিষ্কার ও সুগন্ধি থাকে। দারুণ সেবা!"</p>
+    <h4>— রুমা আক্তার, উত্তরা</h4>
+    <p>⭐⭐⭐⭐⭐</p>
+  </div>
+</div>
+
+<div class="container section" id="contact">
+  <h2 class="section-title">যোগাযোগ করুন</h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>📍 <strong>ঠিকানা:</strong> নয়ানগর, Sontek Main Rd, Dhaka</p>
+      <p>📞 <strong>ফোন:</strong> ০১৯XX-XXXXXX</p>
+      <p>⏰ <strong>সময়:</strong> সকাল ৯টা – রাত ৯টা</p>
+      <p>🗺️ <a href="https://www.google.com/maps/place/%E0%A6%B8%E0%A7%87%E0%A6%AC%E0%A6%BE+%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A7%80+%E0%A6%8F%E0%A6%A8%E0%A7%8D%E0%A6%A1+%E0%A6%A1%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%87+%E0%A6%95%E0%A7%8D%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%B8/@23.70924,90.4433683,126m" target="_blank" style="color:#0b8b74;font-weight:bold;">গুগল ম্যাপে দেখুন →</a></p>
+    </div>
+    <div class="map-placeholder">
+      <iframe src="https://maps.google.com/maps?q=23.7092872,90.4432116&z=17&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>&copy; ২০২৬ লন্ডী এন্ড ড্রাই ক্লিনার্স | নয়ানগর, Sontek Main Rd, Dhaka | পরিচ্ছন্নতার প্রতিশ্রুতি</p>
+  </div>
+</footer>
+
+<!-- ===== ক্যাশ মেমো মডাল ===== -->
+<div id="cashMemoModal" class="modal">
+  <div class="cash-memo">
+    <div class="memo-header">
+      <div class="shop-name-memo">🧾 লন্ডী এন্ড ড্রাই ক্লিনার্স</div>
+      <div style="font-size:0.78rem;">নয়ানগর, Sontek Main Rd, Dhaka</div>
+      <div style="font-size:0.75rem;color:#555;">লন্ড্রি ও ড্রাই ক্লিনিং</div>
+    </div>
+
+    <div class="memo-info-row">
+      <span class="memo-label">মেমো নং:</span>
+      <span id="memoNumber" style="font-weight:bold;">MEMO-1001</span>
+    </div>
+    <div class="memo-info-row">
+      <span class="memo-label">তারিখ:</span>
+      <span id="memoDate"></span>
+    </div>
+    <div class="memo-info-row">
+      <span class="memo-label">গ্রাহকের নাম:</span>
+      <input type="text" id="customerName" class="customer-input" placeholder="নাম টাইপ করুন...">
+    </div>
+    <div class="memo-info-row">
+      <span class="memo-label">ফোন নম্বর:</span>
+      <input type="text" id="customerPhone" class="customer-input" placeholder="মোবাইল নম্বর...">
+    </div>
+
+    <!-- ডেলিভারি স্ট্যাটাস -->
+    <div class="delivery-row">
+      <span class="memo-label">ডেলিভারি:</span>
+      <span id="deliveryBadge" class="delivery-badge-pending">⏳ পেন্ডিং</span>
+      <button id="toggleDeliveryBtn" class="delivery-toggle">✔ ডেলিভারি দেওয়া হয়েছে</button>
+    </div>
+
+    <!-- সার্ভিস টাইপ -->
+    <div class="service-section">
+      <div class="service-section-title">সার্ভিস ধরন নির্বাচন করুন:</div>
+      <div class="service-type-row">
+        <label id="lbl-iron"><input type="checkbox" id="serviceIron"> 🔥 আয়রন</label>
+        <label id="lbl-wash"><input type="checkbox" id="serviceWash"> 🧺 ওয়াশ</label>
+        <label id="lbl-dry"><input type="checkbox" id="serviceDryClean"> ✨ ড্রাই ক্লিন</label>
+      </div>
+    </div>
+
+    <table class="items-table">
+      <thead>
+        <tr><th>কাপড়</th><th>সার্ভিস</th><th>পরিমাণ</th><th>দর (৳)</th><th>মোট</th><th></th></tr>
+      </thead>
+      <tbody id="itemsTableBody"></tbody>
+    </table>
+
+    <button id="addRowBtn" class="add-item-btn">+ আরও যোগ করুন</button>
+
+    <div class="total-row">
+      <span>মোট:</span>
+      <span id="grandTotal">০</span>
+      <span>টাকা</span>
+    </div>
+
+    <div class="action-buttons">
+      <button id="saveMemoBtn" class="memo-btn save-memo">💾 সংরক্ষণ</button>
+      <button id="printMemoBtn" class="memo-btn print-memo">🖨️ প্রিন্ট</button>
+      <button id="whatsappMemoBtn" class="memo-btn whatsapp-memo">📲 WhatsApp</button>
+      <button id="closeMemoBtn" class="memo-btn close-memo">✖ বন্ধ</button>
+    </div>
+
+    <div class="memo-footer">
+      ★ ফ্রি পিকআপ ও ডেলিভারি (৫ পিসের বেশি) ★ ধন্যবাদ আপনার সেবায়!
+    </div>
+  </div>
+</div>
+
+<!-- ===== ইতিহাস মডাল ===== -->
+<div id="historyModal" class="modal">
+  <div class="history-modal-inner">
+    <h2>📋 মেমো ইতিহাস</h2>
+    <div class="history-tabs">
+      <button class="history-tab active" id="tabRecent" onclick="switchTab('recent')">🗓️ তিন মাসের মেমো</button>
+      <button class="history-tab" id="tabOld" onclick="switchTab('old')">🗃️ পুরনো মেমো (লাইফটাইম)</button>
+    </div>
+    <div class="history-lifetime-note" id="historyNote">সর্বশেষ ৩ মাসের মেমো দেখাচ্ছে।</div>
+    <div class="search-bar">
+      <input type="text" id="historySearch" placeholder="🔍 নাম বা মোবাইল নম্বর দিয়ে খুঁজুন..." oninput="renderHistory()">
+    </div>
+    <div class="filter-row">
+      <button class="filter-btn active-all" id="filterAll" onclick="setFilter('all')">সব</button>
+      <button class="filter-btn" id="filterPending" onclick="setFilter('pending')">⏳ পেন্ডিং</button>
+      <button class="filter-btn" id="filterDone" onclick="setFilter('done')">✅ ডেলিভারি দেওয়া হয়েছে</button>
+    </div>
+    <div id="historyList"></div>
+    <button class="btn-close-history" onclick="closeHistoryModal()">✖ বন্ধ করুন</button>
+  </div>
+</div>
+
+<!-- ===== ভিউ মেমো মডাল ===== -->
+<div id="viewMemoModal" class="modal">
+  <div class="view-memo-modal-inner">
+    <div id="viewMemoContent"></div>
+    <div style="display:flex;gap:8px;margin-top:12px;">
+      <button onclick="printViewMemo()" class="memo-btn print-memo" style="flex:1;">🖨️ প্রিন্ট</button>
+      <button onclick="document.getElementById('viewMemoModal').style.display='none'" class="memo-btn close-memo" style="flex:1;">✖ বন্ধ</button>
+    </div>
+  </div>
+</div>
+
+<datalist id="productDatalist">
+  <option value="শার্ট"><option value="প্যান্ট"><option value="পাঞ্জাবি"><option value="ফতুয়া">
+  <option value="স্যালোয়ার"><option value="কামিজ"><option value="ওড়না"><option value="শাল">
+  <option value="কম্বল"><option value="কোট"><option value="সুট"><option value="ব্লেজার">
+  <option value="শাড়ি"><option value="পায়জামা"><option value="বেডশিট"><option value="তোয়ালে">
+</datalist>
+
+<script>
+// ===== প্রাইস ডাটা =====
+const priceDB = {
+  "শার্ট":    { iron: 10, wash: 50, dry: 50 },
+  "প্যান্ট":   { iron: 10, wash: 50, dry: 50 },
+  "পাঞ্জাবি": { iron: 10, wash: 50, dry: 60 },
+  "কামিজ":    { iron: 10, wash: 50, dry: 60 },
+  "ফতুয়া":   { iron: 10, wash: 50, dry: 50 },
+  "কোট":     { iron: 50, wash: 250, dry: 250 },
+  "সুট":     { iron: 50, wash: 250, dry: 250 },
+  "ব্লেজার":  { iron: 50, wash: 200, dry: 200 },
+  "কম্বল":   { iron: 30, wash: 350, dry: 400 },
+  "শাড়ি":   { iron: 30, wash: 100, dry: 150 },
+  "বেডশিট":  { iron: 20, wash: 100, dry: 120 },
+  "তোয়ালে":  { iron: 10, wash: 40,  dry: 40  },
+  "শাল":     { iron: 20, wash: 80,  dry: 100 },
+  "স্যালোয়ার": { iron: 10, wash: 50, dry: 60 },
+  "ওড়না":   { iron: 10, wash: 30,  dry: 40  },
+  "পায়জামা": { iron: 10, wash: 40,  dry: 40  },
+};
+
+function getDefaultPrice(name, serviceType) {
+  const lower = (name || "").trim();
+  const row = priceDB[lower];
+  if (!row) return 10;
+  if (serviceType === 'wash') return row.wash;
+  if (serviceType === 'dry')  return row.dry;
+  return row.iron;
+}
+
+// ===== স্টোরেজ =====
+const STORAGE_KEY = 'loundry_memos_v2';
+
+function loadMemos() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch(e) { return []; }
+}
+function saveMemos(memos) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(memos));
+}
+function isRecent(memo) {
+  const d = new Date(memo.savedAt || memo.date);
+  const diff = (Date.now() - d.getTime()) / (1000*60*60*24);
+  return diff <= 92; // ~3 মাস
+}
+
+// ===== মেমো কাউন্টার =====
+let memoCounter = parseInt(localStorage.getItem('loundry_memo_counter') || '1000');
+function nextMemoNumber() {
+  memoCounter++;
+  localStorage.setItem('loundry_memo_counter', String(memoCounter));
+  return 'MEMO-' + memoCounter;
+}
+
+// ===== বর্তমান মেমো আইডি (এডিট মোড) =====
+let editingMemoId = null;
+let deliveryStatus = 'pending';
+
+// ===== মোট আপডেট =====
+window.updateTotal = function() {
+  let total = 0;
+  document.querySelectorAll('#itemsTableBody tr').forEach(row => {
+    const qty   = parseInt(row.querySelector('.item-qty-input')?.value) || 0;
+    const price = parseFloat(row.querySelector('.item-price-input')?.value) || 0;
+    const span  = row.querySelector('.item-total');
+    const line  = qty * price;
+    if(span) span.textContent = line;
+    total += line;
+  });
+  document.getElementById('grandTotal').textContent = total;
+};
+
+// ===== সক্রিয় সার্ভিস টাইপ =====
+function getActiveServices() {
+  const s = [];
+  if (document.getElementById('serviceIron').checked) s.push('iron');
+  if (document.getElementById('serviceWash').checked) s.push('wash');
+  if (document.getElementById('serviceDryClean').checked) s.push('dry');
+  return s;
+}
+function serviceLabel(s) {
+  if (s === 'iron') return 'আয়রন';
+  if (s === 'wash') return 'ওয়াশ';
+  if (s === 'dry')  return 'ড্রাই ক্লিন';
+  return s;
+}
+
+// সার্ভিস চেকবক্স স্টাইল
+['serviceIron','serviceWash','serviceDryClean'].forEach(id => {
+  document.getElementById(id).addEventListener('change', () => {
+    document.getElementById('lbl-iron').classList.toggle('active-iron', document.getElementById('serviceIron').checked);
+    document.getElementById('lbl-wash').classList.toggle('active-wash', document.getElementById('serviceWash').checked);
+    document.getElementById('lbl-dry').classList.toggle('active-dry', document.getElementById('serviceDryClean').checked);
+  });
+});
+
+// ===== রো তৈরি =====
+window.removeRow = function(btn) {
+  const tbody = document.getElementById('itemsTableBody');
+  if(tbody.children.length > 1) { btn.closest('tr').remove(); updateTotal(); }
+  else alert("অন্তত একটি আইটেম রাখতে হবে!");
+};
+
+function buildRow(name='', svc='iron', qty=1, price=0, setAutoPrice=true) {
+  const tr = document.createElement('tr');
+  const autoPrice = setAutoPrice ? getDefaultPrice(name, svc) : price;
+  const line = qty * autoPrice;
+  tr.innerHTML = `
+    <td><input type="text" class="item-name-input" list="productDatalist" value="${name}" placeholder="কাপড়" style="width:95px;" oninput="onNameChange(this)"></td>
+    <td>
+      <select class="item-svc-select" style="width:80px;font-size:0.78rem;border:1px solid #ccc;border-radius:3px;padding:2px;" onchange="onSvcChange(this)">
+        <option value="iron" ${svc==='iron'?'selected':''}>আয়রন</option>
+        <option value="wash" ${svc==='wash'?'selected':''}>ওয়াশ</option>
+        <option value="dry"  ${svc==='dry'?'selected':''}>ড্রাই ক্লিন</option>
+      </select>
+    </td>
+    <td><input type="number" class="item-qty-input" value="${qty}" style="width:45px;" oninput="updateTotal()" min="1"></td>
+    <td><input type="number" class="item-price-input" value="${setAutoPrice?autoPrice:price}" style="width:55px;" oninput="updateTotal()"></td>
+    <td class="item-total">${setAutoPrice?line:qty*price}</td>
+    <td><button class="remove-item-btn" onclick="removeRow(this)">✖</button></td>
+  `;
+  return tr;
+}
+
+window.onNameChange = function(input) {
+  const row = input.closest('tr');
+  const svc = row.querySelector('.item-svc-select').value;
+  const priceInput = row.querySelector('.item-price-input');
+  const p = getDefaultPrice(input.value, svc);
+  priceInput.value = p;
+  updateTotal();
+};
+window.onSvcChange = function(sel) {
+  const row = sel.closest('tr');
+  const name = row.querySelector('.item-name-input').value;
+  const priceInput = row.querySelector('.item-price-input');
+  priceInput.value = getDefaultPrice(name, sel.value);
+  updateTotal();
+};
+
+function addNewRow() {
+  const svcs = getActiveServices();
+  const svc = svcs.length ? svcs[0] : 'iron';
+  document.getElementById('itemsTableBody').appendChild(buildRow('', svc, 1, 10, true));
+  updateTotal();
+}
+
+// ===== মডাল খোলা =====
+function openMemoModal(editMemo=null) {
+  editingMemoId = null;
+  deliveryStatus = 'pending';
+
+  document.getElementById('memoDate').textContent = new Date().toLocaleDateString('bn-BD');
+  document.getElementById('customerName').value  = '';
+  document.getElementById('customerPhone').value = '';
+  document.getElementById('serviceIron').checked = false;
+  document.getElementById('serviceWash').checked = false;
+  document.getElementById('serviceDryClean').checked = false;
+  ['lbl-iron','lbl-wash','lbl-dry'].forEach(id => {
+    document.getElementById(id).className = '';
+  });
+  document.getElementById('deliveryBadge').className = 'delivery-badge-pending';
+  document.getElementById('deliveryBadge').textContent = '⏳ পেন্ডিং';
+
+  const tbody = document.getElementById('itemsTableBody');
+  tbody.innerHTML = '';
+
+  if (editMemo) {
+    // এডিট মোড — শুধু ক্যাশ মেমো ডাটা আপডেট করব
+    editingMemoId = editMemo.id;
+    document.getElementById('memoNumber').textContent = editMemo.memoNo;
+    document.getElementById('memoDate').textContent = editMemo.date;
+    document.getElementById('customerName').value  = editMemo.name;
+    document.getElementById('customerPhone').value = editMemo.phone;
+    document.getElementById('serviceIron').checked = editMemo.services.includes('iron');
+    document.getElementById('serviceWash').checked = editMemo.services.includes('wash');
+    document.getElementById('serviceDryClean').checked = editMemo.services.includes('dry');
+    document.getElementById('lbl-iron').classList.toggle('active-iron', editMemo.services.includes('iron'));
+    document.getElementById('lbl-wash').classList.toggle('active-wash', editMemo.services.includes('wash'));
+    document.getElementById('lbl-dry').classList.toggle('active-dry', editMemo.services.includes('dry'));
+    deliveryStatus = editMemo.delivery;
+    updateDeliveryUI();
+    editMemo.items.forEach(it => tbody.appendChild(buildRow(it.name, it.svc, it.qty, it.price, false)));
+  } else {
+    document.getElementById('memoNumber').textContent = nextMemoNumber();
+    tbody.appendChild(buildRow('শার্ট', 'iron', 1, 10, false));
+  }
+
+  updateTotal();
+  document.getElementById('cashMemoModal').style.display = 'flex';
+}
+
+function updateDeliveryUI() {
+  const badge = document.getElementById('deliveryBadge');
+  const btn   = document.getElementById('toggleDeliveryBtn');
+  if (deliveryStatus === 'done') {
+    badge.className = 'delivery-badge-done';
+    badge.textContent = '✅ ডেলিভারি দেওয়া হয়েছে';
+    btn.textContent = '↩ পেন্ডিং করুন';
+  } else {
+    badge.className = 'delivery-badge-pending';
+    badge.textContent = '⏳ পেন্ডিং';
+    btn.textContent = '✔ ডেলিভারি দেওয়া হয়েছে';
+  }
+}
+
+document.getElementById('toggleDeliveryBtn').addEventListener('click', () => {
+  deliveryStatus = (deliveryStatus === 'done') ? 'pending' : 'done';
+  updateDeliveryUI();
+});
+
+// ===== মেমো ডাটা সংগ্রহ =====
+function collectMemoData() {
+  const items = [];
+  document.querySelectorAll('#itemsTableBody tr').forEach(row => {
+    const name  = row.querySelector('.item-name-input')?.value || '';
+    const svc   = row.querySelector('.item-svc-select')?.value || 'iron';
+    const qty   = parseInt(row.querySelector('.item-qty-input')?.value) || 0;
+    const price = parseFloat(row.querySelector('.item-price-input')?.value) || 0;
+    if(name) items.push({ name, svc, qty, price, total: qty*price });
+  });
+  const services = [];
+  if (document.getElementById('serviceIron').checked) services.push('iron');
+  if (document.getElementById('serviceWash').checked) services.push('wash');
+  if (document.getElementById('serviceDryClean').checked) services.push('dry');
+  return {
+    id: editingMemoId || ('m_'+Date.now()),
+    memoNo: document.getElementById('memoNumber').textContent,
+    date: document.getElementById('memoDate').textContent,
+    savedAt: new Date().toISOString(),
+    name: document.getElementById('customerName').value || 'নাম নেই',
+    phone: document.getElementById('customerPhone').value || '',
+    services,
+    delivery: deliveryStatus,
+    items,
+    total: parseInt(document.getElementById('grandTotal').textContent) || 0,
+  };
+}
+
+// ===== সংরক্ষণ =====
+document.getElementById('saveMemoBtn').addEventListener('click', () => {
+  const data = collectMemoData();
+  if (!data.name || data.name === 'নাম নেই') {
+    alert('গ্রাহকের নাম দিন!'); return;
+  }
+  const memos = loadMemos();
+  if (editingMemoId) {
+    const idx = memos.findIndex(m => m.id === editingMemoId);
+    if (idx !== -1) memos[idx] = data;
+    else memos.push(data);
+  } else {
+    memos.push(data);
+  }
+  saveMemos(memos);
+  alert('✅ মেমো সংরক্ষণ হয়েছে!');
+  document.getElementById('cashMemoModal').style.display = 'none';
+});
+
+// ===== মেমো টেক্সট =====
+function buildMemoText(d) {
+  const svcs = (d.services||[]).map(serviceLabel).join(', ') || '—';
+  let itemsText = '';
+  (d.items||[]).forEach(it => {
+    itemsText += `${it.name} (${serviceLabel(it.svc)}) x${it.qty} = ${it.total} টাকা\n`;
+  });
+  return `🧾 *লন্ডী এন্ড ড্রাই ক্লিনার্স* 🧾
+━━━━━━━━━━━━━━━━━━━
+মেমো: ${d.memoNo} | তারিখ: ${d.date}
+গ্রাহক: ${d.name}
+ফোন: ${d.phone||'—'}
+সার্ভিস: ${svcs}
+━━━━━━━━━━━━━━━━━━━
+${itemsText}━━━━━━━━━━━━━━━━━━━
+*মোট: ${d.total} টাকা*
+ডেলিভারি: ${d.delivery==='done'?'✅ দেওয়া হয়েছে':'⏳ পেন্ডিং'}
+🚚 ফ্রি ডেলিভারি (৫+ পিস)
+📍 নয়ানগর, Sontek Main Rd, Dhaka
+🙏 ধন্যবাদ!`;
+}
+
+// ===== প্রিন্ট =====
+function printMemo() {
+  const d = collectMemoData();
+  doPrint(d);
+}
+function doPrint(d) {
+  const svcs = (d.services||[]).map(serviceLabel).join(' | ') || '—';
+  let rows = '';
+  (d.items||[]).forEach(it => {
+    rows += `<tr><td>${it.name}</td><td>${serviceLabel(it.svc)}</td><td>${it.qty}</td><td>${it.price}</td><td>${it.total}</td></tr>`;
+  });
+  const w = window.open('','_blank');
+  w.document.write(`<html><head><title>ক্যাশ মেমো</title>
+  <style>body{font-family:monospace;padding:20px;max-width:450px;margin:auto;}
+  table{width:100%;border-collapse:collapse;}th,td{border:1px solid #000;padding:5px;text-align:center;}th{background:#eee;}
+  .hd{text-align:center;border-bottom:2px solid #000;padding-bottom:8px;margin-bottom:12px;}
+  .row{display:flex;justify-content:space-between;margin:6px 0;border-bottom:1px dashed #ccc;}
+  .total{font-weight:bold;font-size:1.2em;margin-top:10px;border-top:2px solid #000;padding-top:8px;}
+  .ft{text-align:center;font-size:0.75em;margin-top:14px;border-top:1px dashed #ccc;padding-top:8px;}
+  </style></head><body>
+  <div class="hd"><b>লন্ডী এন্ড ড্রাই ক্লিনার্স</b><br><small>নয়ানগর, Sontek Main Rd, Dhaka</small></div>
+  <div class="row"><span>মেমো নং:</span><span>${d.memoNo}</span></div>
+  <div class="row"><span>তারিখ:</span><span>${d.date}</span></div>
+  <div class="row"><span>গ্রাহক:</span><span>${d.name}</span></div>
+  <div class="row"><span>ফোন:</span><span>${d.phone||'—'}</span></div>
+  <div class="row"><span>সার্ভিস:</span><span>${svcs}</span></div>
+  <div class="row"><span>ডেলিভারি:</span><span>${d.delivery==='done'?'✅ দেওয়া হয়েছে':'⏳ পেন্ডিং'}</span></div>
+  <table style="margin-top:10px;"><thead><tr><th>কাপড়</th><th>সার্ভিস</th><th>পিস</th><th>দর</th><th>মোট</th></tr></thead>
+  <tbody>${rows}</tbody></table>
+  <div class="total" style="display:flex;justify-content:space-between;"><span>মোট মূল্য:</span><span>${d.total} টাকা</span></div>
+  <div class="ft">★ ফ্রি পিকআপ ও ডেলিভারি (৫ পিসের বেশি) ★ ধন্যবাদ!</div>
+  </body></html>`);
+  w.document.close(); w.print();
+}
+
+document.getElementById('printMemoBtn').addEventListener('click', printMemo);
+document.getElementById('whatsappMemoBtn').addEventListener('click', () => {
+  const d = collectMemoData();
+  window.open('https://wa.me/8801XXXXXXXXX?text='+encodeURIComponent(buildMemoText(d)),'_blank');
+});
+document.getElementById('closeMemoBtn').addEventListener('click', () => {
+  document.getElementById('cashMemoModal').style.display = 'none';
+});
+document.getElementById('openCashMemoBtn').addEventListener('click', () => openMemoModal());
+document.getElementById('addRowBtn').addEventListener('click', addNewRow);
+
+// ===== ইতিহাস মডাল =====
+let currentTab = 'recent';
+let currentFilter = 'all';
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.getElementById('tabRecent').classList.toggle('active', tab==='recent');
+  document.getElementById('tabOld').classList.toggle('active', tab==='old');
+  document.getElementById('historyNote').textContent = tab==='recent'
+    ? 'সর্বশেষ ৩ মাসের মেমো দেখাচ্ছে।'
+    : 'তিন মাসের পুরনো মেমো (লাইফটাইম সংরক্ষণ)।';
+  renderHistory();
+}
+
+function setFilter(f) {
+  currentFilter = f;
+  document.getElementById('filterAll').className = 'filter-btn' + (f==='all'?' active-all':'');
+  document.getElementById('filterPending').className = 'filter-btn' + (f==='pending'?' active-pending':'');
+  document.getElementById('filterDone').className = 'filter-btn' + (f==='done'?' active-done':'');
+  renderHistory();
+}
+
+function renderHistory() {
+  const q = (document.getElementById('historySearch').value || '').trim().toLowerCase();
+  let memos = loadMemos();
+
+  // ট্যাব ফিল্টার
+  memos = memos.filter(m => currentTab==='recent' ? isRecent(m) : !isRecent(m));
+
+  // ডেলিভারি ফিল্টার
+  if (currentFilter === 'pending') memos = memos.filter(m => m.delivery !== 'done');
+  if (currentFilter === 'done')    memos = memos.filter(m => m.delivery === 'done');
+
+  // সার্চ
+  if (q) memos = memos.filter(m =>
+    m.name.toLowerCase().includes(q) || (m.phone||'').includes(q)
+  );
+
+  // নতুন থেকে পুরনো
+  memos = memos.slice().reverse();
+
+  const list = document.getElementById('historyList');
+  if (!memos.length) {
+    list.innerHTML = '<div class="no-memo-msg">কোনো মেমো পাওয়া যায়নি।</div>';
+    return;
+  }
+
+  list.innerHTML = memos.map(m => {
+    const svcs = (m.services||[]).map(serviceLabel).join(', ');
+    const badge = m.delivery==='done'
+      ? '<span class="delivery-badge-done">✅ ডেলিভারি</span>'
+      : '<span class="delivery-badge-pending">⏳ পেন্ডিং</span>';
+    const deliverBtnHtml = m.delivery !== 'done'
+      ? `<button class="btn-sm btn-deliver" onclick="markDelivered('${m.id}')">✔ ডেলিভারি দেওয়া হয়েছে</button>`
+      : `<button class="btn-sm" style="background:#aaa;color:white;" onclick="markPending('${m.id}')">↩ পেন্ডিং</button>`;
+    return `<div class="memo-card">
+      <div class="memo-card-header">
+        <div>
+          <span class="memo-card-title">${m.memoNo}</span> — ${m.name}
+          ${m.phone ? `<span style="color:#555;"> | 📞 ${m.phone}</span>` : ''}
+        </div>
+        ${badge}
+      </div>
+      <div class="memo-card-meta">📅 ${m.date} &nbsp;|&nbsp; সার্ভিস: ${svcs||'—'} &nbsp;|&nbsp; মোট: <b>${m.total} টাকা</b></div>
+      <div class="memo-card-actions">
+        <button class="btn-sm btn-view" onclick="viewMemo('${m.id}')">👁 দেখুন</button>
+        <button class="btn-sm btn-view" style="background:#3d5a80;" onclick="editMemo('${m.id}')">✏️ আপডেট</button>
+        ${deliverBtnHtml}
+        <button class="btn-sm btn-delete" onclick="deleteMemo('${m.id}')">🗑 মুছুন</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function markDelivered(id) {
+  const memos = loadMemos();
+  const m = memos.find(x => x.id===id);
+  if(m) { m.delivery='done'; saveMemos(memos); renderHistory(); }
+}
+function markPending(id) {
+  const memos = loadMemos();
+  const m = memos.find(x => x.id===id);
+  if(m) { m.delivery='pending'; saveMemos(memos); renderHistory(); }
+}
+function deleteMemo(id) {
+  if(!confirm('এই মেমো মুছতে চান?')) return;
+  saveMemos(loadMemos().filter(m => m.id!==id));
+  renderHistory();
+}
+function editMemo(id) {
+  const m = loadMemos().find(x => x.id===id);
+  if(!m) return;
+  document.getElementById('historyModal').style.display='none';
+  openMemoModal(m);
+}
+function viewMemo(id) {
+  const m = loadMemos().find(x => x.id===id);
+  if(!m) return;
+  const svcs = (m.services||[]).map(serviceLabel).join(' | ') || '—';
+  let rows = (m.items||[]).map(it =>
+    `<tr><td>${it.name}</td><td>${serviceLabel(it.svc)}</td><td>${it.qty}</td><td>${it.price}</td><td>${it.total}</td></tr>`
+  ).join('');
+  document.getElementById('viewMemoContent').innerHTML = `
+    <div class="memo-header"><div class="shop-name-memo">🧾 লন্ডী এন্ড ড্রাই ক্লিনার্স</div>
+    <div style="font-size:0.78rem;">নয়ানগর, Sontek Main Rd, Dhaka</div></div>
+    <div class="memo-info-row"><span class="memo-label">মেমো নং:</span><span>${m.memoNo}</span></div>
+    <div class="memo-info-row"><span class="memo-label">তারিখ:</span><span>${m.date}</span></div>
+    <div class="memo-info-row"><span class="memo-label">গ্রাহক:</span><span>${m.name}</span></div>
+    <div class="memo-info-row"><span class="memo-label">ফোন:</span><span>${m.phone||'—'}</span></div>
+    <div class="memo-info-row"><span class="memo-label">সার্ভিস:</span><span>${svcs}</span></div>
+    <div class="memo-info-row"><span class="memo-label">ডেলিভারি:</span><span>${m.delivery==='done'?'✅ দেওয়া হয়েছে':'⏳ পেন্ডিং'}</span></div>
+    <table class="items-table" style="margin-top:10px;">
+      <thead><tr><th>কাপড়</th><th>সার্ভিস</th><th>পিস</th><th>দর</th><th>মোট</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+    <div class="total-row"><span>মোট মূল্য:</span><span>${m.total} টাকা</span></div>
+    <div class="memo-footer">★ ফ্রি পিকআপ ও ডেলিভারি (৫ পিসের বেশি) ★ ধন্যবাদ!</div>
+  `;
+  window._viewMemoData = m;
+  document.getElementById('viewMemoModal').style.display='flex';
+}
+window.printViewMemo = function() {
+  if(window._viewMemoData) doPrint(window._viewMemoData);
+};
+
+document.getElementById('openHistoryBtn').addEventListener('click', () => {
+  renderHistory();
+  document.getElementById('historyModal').style.display='flex';
+});
+window.closeHistoryModal = function() {
+  document.getElementById('historyModal').style.display='none';
+};
+
+// মডালের বাইরে ক্লিক করলে বন্ধ
+['cashMemoModal','historyModal','viewMemoModal'].forEach(id => {
+  document.getElementById(id).addEventListener('click', function(e) {
+    if(e.target === this) this.style.display='none';
+  });
+});
+</script>
+</body>
+</html>
