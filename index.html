@@ -6,192 +6,358 @@
   <title>সেবা লন্ড্রি এন্ড ড্রাই ক্লিনার্স | নয়ানগর, ঢাকা</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f9f4; color: #1e2f2e; line-height: 1.5; }
+    body {
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f0f7f4;
+      color: #1e2f2e;
+      line-height: 1.5;
+    }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .header { background: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
-    .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 16px 0; }
+    .header {
+      background: #ffffff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 16px 0;
+    }
     .logo h1 { font-size: 1.6rem; color: #0b5e4f; }
     .logo p { font-size: 0.85rem; color: #2c7a6e; }
-    .nav a { margin-left: 25px; text-decoration: none; color: #1e2f2e; font-weight: 600; }
-    .nav-auth-btns { display:flex; gap:8px; align-items:center; }
-    .nav-auth-btns button { padding:7px 16px; border-radius:20px; border:none; cursor:pointer; font-weight:bold; font-size:0.85rem; }
-    .btn-login-nav { background:#0b5e4f; color:white; }
-    .btn-logout-nav { background:#dc3545; color:white; }
-    .user-greeting { font-size:0.85rem; color:#0b5e4f; font-weight:bold; }
-    @media (max-width: 680px) { .header-inner { flex-direction: column; gap: 10px; } .nav a { margin: 0 12px; font-size: 0.9rem; } }
-    .hero { background: linear-gradient(135deg, #d9f0ec, #bde5df); padding: 60px 0; text-align: center; }
+    .nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #1e2f2e;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .nav a:hover { color: #0b8b74; }
+    .nav-auth-btns { display: flex; gap: 12px; align-items: center; }
+    .btn-login-nav {
+      background: #0b5e4f;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-logout-nav {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .user-greeting {
+      background: #e9f5f2;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #0b5e4f;
+    }
+    @media (max-width: 680px) {
+      .header-inner { flex-direction: column; gap: 12px; }
+      .nav a { margin: 0 12px; font-size: 0.9rem; }
+    }
+    .hero {
+      background: linear-gradient(135deg, #d9f0ec, #bde5df);
+      padding: 60px 0;
+      text-align: center;
+    }
     .hero h2 { font-size: 2.3rem; color: #05445b; margin-bottom: 15px; }
     .hero p { font-size: 1.2rem; max-width: 650px; margin: 0 auto 25px; }
-    .btn { display: inline-block; background-color: #0b8b74; color: white; padding: 12px 32px; border-radius: 40px; text-decoration: none; font-weight: bold; }
+    .btn {
+      display: inline-block;
+      background-color: #0b8b74;
+      color: white;
+      padding: 12px 32px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s;
+    }
     .btn-wa { background-color: #25D366; margin-left: 12px; }
     .section { padding: 60px 0; }
-    .section-title { text-align: center; font-size: 2rem; margin-bottom: 40px; color: #0b5e4f; }
-    .cards { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
-    .card { background: white; border-radius: 24px; padding: 28px 20px; text-align: center; width: 260px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-    .card-icon { font-size: 3rem; margin-bottom: 15px; }
-    .card h3 { margin-bottom: 12px; }
-    .price { font-weight: bold; color: #0b8b74; font-size: 1.2rem; margin: 12px 0; }
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #0b5e4f;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+    .card {
+      background: white;
+      border-radius: 28px;
+      padding: 28px 20px;
+      text-align: center;
+      width: 260px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+      transition: 0.2s;
+    }
+    .card:hover { transform: translateY(-5px); }
     .price-list { background: #fef9e6; }
-    .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; max-width: 800px; margin: 0 auto; }
-    .price-item { background: white; padding: 14px 20px; border-radius: 40px; display: flex; justify-content: space-between; }
-    .item-price { color: #0b8b74; font-weight: bold; }
-    .testimonial { background: white; border-radius: 32px; padding: 30px; max-width: 700px; margin: 0 auto; text-align: center; }
-    .contact-grid { display: flex; flex-wrap: wrap; gap: 40px; background: #eaf7f3; padding: 30px; border-radius: 32px; }
-    .contact-info { flex: 1; }
-    .contact-info p { margin: 12px 0; }
-    .map-placeholder { flex: 1; background: #cfdfda; border-radius: 20px; padding: 20px; text-align: center; }
-    .map-placeholder iframe { width: 100%; height: 220px; border: 0; border-radius: 12px; }
-    footer { background: #0b5e4f; color: white; text-align: center; padding: 24px 0; margin-top: 20px; }
-    .wa-float { position: fixed; bottom: 25px; right: 25px; background-color: #25D366; border-radius: 50px; padding: 12px 20px; color: white; font-weight: bold; text-decoration: none; z-index: 99; }
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .price-item {
+      background: white;
+      padding: 14px 20px;
+      border-radius: 60px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 500;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .testimonial {
+      background: white;
+      border-radius: 32px;
+      padding: 30px;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      background: #eaf7f3;
+      padding: 30px;
+      border-radius: 32px;
+    }
+    footer {
+      background: #0b5e4f;
+      color: white;
+      text-align: center;
+      padding: 24px 0;
+      margin-top: 20px;
+    }
+    .wa-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25D366;
+      border-radius: 50px;
+      padding: 12px 20px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      z-index: 99;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
 
-    /* ===== ফ্লোটিং বাটন (শুধু এডমিন দেখবে) ===== */
-    .order-btn-fixed { position: fixed; bottom: 85px; right: 25px; background-color: #0b8b74; color: white; border: none; border-radius: 50px; padding: 14px 24px; font-size: 1rem; font-weight: bold; cursor: pointer; z-index: 99; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display:none; }
-    .order-btn-fixed:hover { background-color: #096b59; }
-    .history-btn-fixed { position: fixed; bottom: 145px; right: 25px; background-color: #3d5a80; color: white; border: none; border-radius: 50px; padding: 14px 24px; font-size: 1rem; font-weight: bold; cursor: pointer; z-index: 99; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display:none; }
-    .history-btn-fixed:hover { background-color: #2c4460; }
+    /* Floating buttons */
+    .order-btn-fixed, .history-btn-fixed, .customer-order-btn-fixed, .customer-myorders-btn-fixed {
+      position: fixed;
+      right: 25px;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 99;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      display: none;
+      transition: 0.2s;
+    }
+    .order-btn-fixed { bottom: 85px; background-color: #0b8b74; color: white; }
+    .history-btn-fixed { bottom: 145px; background-color: #3d5a80; color: white; }
+    .customer-order-btn-fixed { bottom: 85px; background-color: #e67e22; color: white; }
+    .customer-myorders-btn-fixed { bottom: 145px; background-color: #6c3483; color: white; }
 
-    /* কাস্টমার অর্ডার বাটন */
-    .customer-order-btn-fixed { position: fixed; bottom: 85px; right: 25px; background-color: #e67e22; color: white; border: none; border-radius: 50px; padding: 14px 24px; font-size: 1rem; font-weight: bold; cursor: pointer; z-index: 99; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display:none; }
-    .customer-order-btn-fixed:hover { background-color: #ca6f1e; }
-    .customer-myorders-btn-fixed { position: fixed; bottom: 145px; right: 25px; background-color: #6c3483; color: white; border: none; border-radius: 50px; padding: 14px 24px; font-size: 1rem; font-weight: bold; cursor: pointer; z-index: 99; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display:none; }
-    .customer-myorders-btn-fixed:hover { background-color: #5b2c6f; }
-
-    /* ===== মডাল বেস ===== */
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index: 1000; }
-
-    /* ===== লগইন / রেজিস্ট্রেশন মডাল ===== */
-    .auth-modal-inner { background: white; max-width: 420px; width: 97%; border-radius: 16px; padding: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-    .auth-modal-inner h2 { text-align:center; color:#0b5e4f; margin-bottom:20px; font-size:1.4rem; }
-    .auth-tabs { display:flex; gap:0; margin-bottom:20px; border:2px solid #0b5e4f; border-radius:8px; overflow:hidden; }
-    .auth-tab { flex:1; padding:10px; background:white; color:#0b5e4f; border:none; cursor:pointer; font-weight:bold; font-size:0.95rem; }
-    .auth-tab.active { background:#0b5e4f; color:white; }
-    .auth-field { margin-bottom:14px; }
-    .auth-field label { display:block; font-weight:bold; margin-bottom:4px; font-size:0.9rem; color:#333; }
-    .auth-field input { width:100%; padding:10px 14px; border:1.5px solid #ccc; border-radius:8px; font-size:0.95rem; outline:none; }
-    .auth-field input:focus { border-color:#0b5e4f; }
-    .auth-submit-btn { width:100%; padding:12px; background:#0b5e4f; color:white; border:none; border-radius:8px; font-size:1rem; font-weight:bold; cursor:pointer; margin-top:5px; }
-    .auth-submit-btn:hover { background:#096b59; }
-    .auth-divider { text-align:center; color:#888; margin:12px 0; font-size:0.85rem; }
-    .auth-admin-link { text-align:center; margin-top:10px; }
-    .auth-admin-link button { background:none; border:1.5px solid #0b5e4f; color:#0b5e4f; padding:8px 18px; border-radius:20px; cursor:pointer; font-weight:bold; font-size:0.85rem; }
-    .auth-msg { text-align:center; padding:8px; border-radius:6px; font-size:0.88rem; margin-top:8px; }
-    .auth-msg.error { background:#fdecea; color:#c62828; }
-    .auth-msg.success { background:#e8f5e9; color:#2e7d32; }
-    .auth-close-btn { float:right; background:none; border:none; font-size:1.4rem; cursor:pointer; color:#888; margin-top:-10px; }
-
-    /* এডমিন পাসওয়ার্ড সেকশন */
-    .admin-login-section { border-top:1px dashed #ccc; margin-top:15px; padding-top:15px; }
-    .admin-login-section h4 { color:#c0392b; margin-bottom:10px; font-size:0.95rem; }
-
-    /* ===== ক্যাশ মেমো ===== */
-    .cash-memo { background: white; max-width: 580px; width: 97%; border-radius: 12px; padding: 20px; box-shadow: 0 20px 35px rgba(0,0,0,0.3); font-family: 'Courier New', monospace; max-height: 93vh; overflow-y: auto; }
-    .memo-header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 15px; }
-    .shop-name-memo { font-size: 1.3rem; font-weight: bold; color: #0b5e4f; }
-    .memo-info-row { display: flex; justify-content: space-between; align-items: center; margin: 8px 0; padding: 5px 0; border-bottom: 1px dashed #ccc; }
-    .memo-label { font-weight: bold; white-space: nowrap; margin-right: 8px; }
-    .customer-input { border: 1px solid #ccc; padding: 5px 8px; border-radius: 4px; width: 65%; font-family: 'Segoe UI', sans-serif; }
-    .service-section { margin: 14px 0; padding: 10px; background: #f0f8ff; border-radius: 8px; border: 1px solid #b0d4e8; }
-    .service-section-title { font-weight: bold; font-size: 0.9rem; margin-bottom: 8px; color: #0b5e4f; }
-    .service-type-row { display: flex; gap: 18px; margin-bottom: 10px; flex-wrap: wrap; }
-    .service-type-row label { display: flex; align-items: center; gap: 5px; font-weight: bold; cursor: pointer; padding: 5px 10px; border: 2px solid #ccc; border-radius: 20px; font-size: 0.85rem; transition: all 0.2s; }
-    .service-type-row label.active-iron { border-color: #e67e22; background: #fef9e6; color: #c0392b; }
-    .service-type-row label.active-wash { border-color: #2980b9; background: #eaf3fb; color: #1a5276; }
-    .service-type-row label.active-dry { border-color: #8e44ad; background: #f5eefa; color: #6c3483; }
-    .items-table { width: 100%; border-collapse: collapse; margin: 10px 0; }
-    .items-table th, .items-table td { border: 1px solid #000; padding: 6px 4px; font-size: 0.82rem; }
-    .items-table th { background: #f0f0f0; text-align: center; }
-    .items-table td { text-align: center; }
-    .items-table td:first-child { text-align: left; }
-    .item-name-input { width: 95px; border: 1px solid #ccc; border-radius: 3px; padding: 3px; font-size: 0.8rem; }
-    .item-qty-input, .item-price-input { width: 55px; text-align: center; border: 1px solid #ccc; border-radius: 3px; padding: 3px; font-size: 0.8rem; }
-    .remove-item-btn { background: none; border: none; color: red; cursor: pointer; font-size: 1.1rem; }
-    .total-row { display: flex; justify-content: space-between; font-weight: bold; font-size: 1.2rem; margin: 12px 0; padding-top: 10px; border-top: 2px solid #000; }
-    .memo-footer { text-align: center; margin-top: 15px; font-size: 0.7rem; border-top: 1px dashed #ccc; padding-top: 8px; }
-    .action-buttons { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
-    .memo-btn { flex: 1; padding: 10px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 0.9rem; min-width: 80px; }
-    .print-memo { background: #0b5e4f; color: white; }
-    .whatsapp-memo { background: #25D366; color: white; }
-    .close-memo { background: #dc3545; color: white; }
-    .save-memo { background: #e67e22; color: white; }
-    .add-item-btn { background: #0b8b74; color: white; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; margin-bottom: 8px; font-size: 0.85rem; }
-    .delivery-row { display: flex; align-items: center; gap: 10px; margin: 10px 0; padding: 8px; background: #fff8e1; border-radius: 6px; border: 1px solid #f0c060; }
-    .delivery-row label { font-weight: bold; font-size: 0.88rem; }
-    .delivery-badge-pending { background: #f39c12; color: white; padding: 3px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: bold; }
-    .delivery-badge-done { background: #27ae60; color: white; padding: 3px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: bold; }
-    .delivery-toggle { background: none; border: 2px solid #27ae60; color: #27ae60; padding: 4px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.8rem; }
-    .delivery-toggle:hover { background: #27ae60; color: white; }
-
-    /* ===== ইতিহাস মডাল ===== */
-    .history-modal-inner { background: white; max-width: 700px; width: 97%; border-radius: 12px; padding: 20px; box-shadow: 0 20px 35px rgba(0,0,0,0.3); max-height: 93vh; overflow-y: auto; font-family: 'Segoe UI', sans-serif; }
-    .history-modal-inner h2 { text-align: center; color: #0b5e4f; margin-bottom: 15px; font-size: 1.3rem; }
-    .history-tabs { display: flex; gap: 8px; margin-bottom: 15px; }
-    .history-tab { flex: 1; padding: 8px; border: 2px solid #0b5e4f; background: white; color: #0b5e4f; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
-    .history-tab.active { background: #0b5e4f; color: white; }
-    .search-bar { display: flex; gap: 8px; margin-bottom: 12px; }
-    .search-bar input { flex: 1; padding: 8px 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.9rem; }
-    .filter-row { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
-    .filter-btn { padding: 5px 14px; border: 2px solid #ccc; background: white; border-radius: 20px; cursor: pointer; font-size: 0.82rem; font-weight: bold; }
-    .filter-btn.active-all { border-color: #0b5e4f; background: #0b5e4f; color: white; }
-    .filter-btn.active-pending { border-color: #f39c12; background: #f39c12; color: white; }
-    .filter-btn.active-done { border-color: #27ae60; background: #27ae60; color: white; }
-    .memo-card { background: #f9f9f9; border: 1px solid #ddd; border-radius: 10px; padding: 12px; margin-bottom: 10px; }
-    .memo-card-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
-    .memo-card-title { font-weight: bold; font-size: 0.95rem; }
-    .memo-card-meta { font-size: 0.78rem; color: #666; }
-    .memo-card-actions { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
-    .btn-sm { padding: 4px 10px; border: none; border-radius: 4px; cursor: pointer; font-size: 0.78rem; font-weight: bold; }
-    .btn-view { background: #0b8b74; color: white; }
-    .btn-deliver { background: #27ae60; color: white; }
-    .btn-delete { background: #dc3545; color: white; }
-    .btn-close-history { background: #dc3545; color: white; padding: 8px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 12px; float: right; }
-    .no-memo-msg { text-align: center; color: #999; padding: 30px; font-size: 1rem; }
-    .history-lifetime-note { text-align: center; background: #e8f4f8; padding: 8px; border-radius: 6px; font-size: 0.8rem; color: #555; margin-bottom: 10px; }
-
-    /* প্রিন্ট ভিউ মডাল */
-    .view-memo-modal-inner { background: white; max-width: 550px; width: 97%; border-radius: 12px; padding: 20px; box-shadow: 0 20px 35px rgba(0,0,0,0.3); max-height: 93vh; overflow-y: auto; font-family: 'Courier New', monospace; }
-
-    /* ===== কাস্টমার অর্ডার মডাল ===== */
-    .customer-order-inner { background: white; max-width: 520px; width: 97%; border-radius: 14px; padding: 24px; box-shadow: 0 20px 35px rgba(0,0,0,0.3); max-height: 93vh; overflow-y: auto; font-family: 'Segoe UI', sans-serif; }
-    .customer-order-inner h2 { text-align:center; color:#0b5e4f; margin-bottom:16px; font-size:1.2rem; }
-    .order-field { margin-bottom:12px; }
-    .order-field label { display:block; font-weight:bold; margin-bottom:4px; color:#333; font-size:0.9rem; }
-    .order-field input, .order-field select, .order-field textarea { width:100%; padding:9px 12px; border:1.5px solid #ccc; border-radius:8px; font-size:0.9rem; }
-    .order-field textarea { height:70px; resize:vertical; }
-    .order-submit-btn { width:100%; padding:12px; background:#e67e22; color:white; border:none; border-radius:8px; font-size:1rem; font-weight:bold; cursor:pointer; margin-top:8px; }
-    .order-submit-btn:hover { background:#ca6f1e; }
-    .order-service-checks { display:flex; gap:14px; flex-wrap:wrap; margin-top:6px; }
-    .order-service-checks label { display:flex; align-items:center; gap:5px; font-size:0.9rem; cursor:pointer; }
-
-    /* ===== আমার অর্ডার ===== */
-    .my-orders-inner { background: white; max-width: 600px; width: 97%; border-radius: 14px; padding: 24px; box-shadow: 0 20px 35px rgba(0,0,0,0.3); max-height: 93vh; overflow-y: auto; font-family: 'Segoe UI', sans-serif; }
-    .my-orders-inner h2 { text-align:center; color:#6c3483; margin-bottom:16px; font-size:1.2rem; }
-    .customer-order-card { background:#f9f9f9; border:1px solid #ddd; border-radius:10px; padding:12px; margin-bottom:10px; }
-    .customer-order-card-header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; margin-bottom:6px; }
-    .customer-order-status-pending { background:#f39c12; color:white; padding:3px 10px; border-radius:20px; font-size:0.78rem; font-weight:bold; }
-    .customer-order-status-confirmed { background:#2980b9; color:white; padding:3px 10px; border-radius:20px; font-size:0.78rem; font-weight:bold; }
-    .customer-order-status-done { background:#27ae60; color:white; padding:3px 10px; border-radius:20px; font-size:0.78rem; font-weight:bold; }
-    .customer-order-cancel-btn { background:#dc3545; color:white; padding:4px 12px; border:none; border-radius:4px; cursor:pointer; font-size:0.78rem; font-weight:bold; }
-
-    /* এডমিন অর্ডার পেনেল */
-    .admin-orders-inner { background: white; max-width: 750px; width: 97%; border-radius: 14px; padding: 24px; box-shadow: 0 20px 35px rgba(0,0,0,0.3); max-height: 93vh; overflow-y: auto; font-family: 'Segoe UI', sans-serif; }
-    .admin-orders-inner h2 { text-align:center; color:#0b5e4f; margin-bottom:16px; font-size:1.2rem; }
-    .admin-order-card { background:#fff8e1; border:1px solid #f0c060; border-radius:10px; padding:12px; margin-bottom:10px; }
-    .admin-order-card.confirmed { background:#eaf3fb; border-color:#aed6f1; }
-    .admin-order-card.done { background:#eafaf1; border-color:#82e0aa; }
-    .admin-order-card-header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; margin-bottom:6px; }
-    .admin-order-title { font-weight:bold; font-size:0.95rem; }
-    .admin-order-meta { font-size:0.82rem; color:#555; margin:4px 0; }
-    .admin-order-actions { display:flex; gap:8px; margin-top:8px; flex-wrap:wrap; }
-    .btn-confirm { background:#2980b9; color:white; }
-    .btn-done { background:#27ae60; color:white; }
-    .btn-make-memo { background:#0b5e4f; color:white; }
-    .new-order-badge { display:inline-block; background:red; color:white; border-radius:50%; width:20px; height:20px; text-align:center; line-height:20px; font-size:0.75rem; font-weight:bold; margin-left:5px; }
-
+    /* Modal styling */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .auth-modal-inner, .cash-memo, .history-modal-inner, .view-memo-modal-inner,
+    .customer-order-inner, .my-orders-inner, .admin-orders-inner {
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .auth-modal-inner { max-width: 460px; width: 95%; padding: 30px; }
+    .cash-memo { max-width: 600px; width: 95%; padding: 24px; font-family: 'Courier New', monospace; }
+    .history-modal-inner { max-width: 780px; width: 95%; padding: 24px; }
+    .view-memo-modal-inner { max-width: 550px; width: 95%; padding: 24px; }
+    .customer-order-inner { max-width: 700px; width: 95%; padding: 24px; }
+    
+    .auth-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 24px;
+      border-radius: 60px;
+      background: #f0f0f0;
+      padding: 4px;
+    }
+    .auth-tab {
+      flex: 1;
+      padding: 10px;
+      background: transparent;
+      border: none;
+      border-radius: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .auth-tab.active {
+      background: #0b5e4f;
+      color: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .auth-field {
+      margin-bottom: 16px;
+    }
+    .auth-field label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+    }
+    .auth-field input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 16px;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+    .auth-field input:focus {
+      border-color: #0b8b74;
+      outline: none;
+    }
+    .auth-submit-btn {
+      width: 100%;
+      padding: 12px;
+      background: #0b5e4f;
+      color: white;
+      border: none;
+      border-radius: 40px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .admin-card {
+      background: #f8f9fa;
+      border-radius: 20px;
+      padding: 16px;
+      margin-top: 20px;
+      border: 1px solid #e9ecef;
+    }
+    .admin-card h4 {
+      color: #c0392b;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+    .close-btn {
+      float: right;
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: #aaa;
+    }
+    /* history cards */
+    .history-card {
+      background: white;
+      border-radius: 20px;
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border: 1px solid #eef2f0;
+      transition: 0.1s;
+    }
+    .filter-buttons {
+      display: flex;
+      gap: 10px;
+      margin: 15px 0;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 6px 18px;
+      border-radius: 40px;
+      border: 1.5px solid #ccc;
+      background: white;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .filter-btn.active {
+      background: #0b5e4f;
+      border-color: #0b5e4f;
+      color: white;
+    }
+    .items-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+    }
+    .items-table th, .items-table td {
+      border: 1px solid #ddd;
+      padding: 8px 4px;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin: 12px 0;
+      padding-top: 10px;
+      border-top: 2px solid #0b5e4f;
+    }
+    .action-buttons { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 15px; }
+    .memo-btn {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .add-item-btn {
+      background: #0b8b74;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-bottom: 8px;
+    }
     @media (max-width: 550px) {
-      .hero h2 { font-size: 1.6rem; }
       .item-name-input { width: 70px; }
-      .item-qty-input, .item-price-input { width: 42px; }
-      .service-type-row { gap: 8px; }
+      .item-qty-input, .item-price-input { width: 45px; }
     }
   </style>
 </head>
@@ -199,10 +365,8 @@
 
 <a href="https://wa.me/8801714391128?text=আমি%20আপনার%20লন্ড্রি%20সেবা%20নিতে%20চাই" class="wa-float" target="_blank">📲 হোয়াটসঅ্যাপ</a>
 
-<!-- এডমিন বাটন -->
 <button id="openCashMemoBtn" class="order-btn-fixed">🧾 ক্যাশ মেমো</button>
 <button id="openHistoryBtn" class="history-btn-fixed">📋 মেমো ইতিহাস</button>
-<!-- কাস্টমার বাটন -->
 <button id="customerOrderBtn" class="customer-order-btn-fixed">📦 অর্ডার করুন</button>
 <button id="customerMyOrdersBtn" class="customer-myorders-btn-fixed">📋 আমার অর্ডার</button>
 
@@ -210,7 +374,7 @@
   <div class="container header-inner">
     <div class="logo">
       <h1>সেবা লন্ড্রি এন্ড ড্রাই ক্লিনার্স</h1>
-      <p>নয়ানগর, Sontek Main Rd, Dhaka — নিশ্চিন্তে পোশাক দিন, নির্ভার থাকুন</p>
+      <p>নয়ানগর, Sontek Main Rd, Dhaka — নিশ্চিন্তে পোশাক দিন</p>
     </div>
     <div class="nav">
       <a href="#">হোম</a>
@@ -218,1011 +382,313 @@
       <a href="#prices">মূল্য</a>
       <a href="#contact">যোগাযোগ</a>
     </div>
-    <div class="nav-auth-btns" id="navAuthArea">
-      <!-- JS দিয়ে রেন্ডার হবে -->
-    </div>
+    <div class="nav-auth-btns" id="navAuthArea"></div>
   </div>
 </header>
 
-<section class="hero">
-  <div class="container">
-    <h2>সেবা লন্ড্রি এন্ড ড্রাই ক্লিনার্স</h2>
-    <p>আপনার মূল্যবান পোশাকের যত্ন নিই আধুনিক প্রযুক্তিতে। ফ্রি পিকআপ ও ডেলিভারি সেবা!</p>
-    <a href="https://wa.me/8801714391128?text=আমি%20বুকিং%20করতে%20চাই" class="btn" target="_blank">অনলাইন বুকিং</a>
-    <a href="tel:+8801714391128" class="btn btn-wa">📞 কল করুন</a>
-  </div>
-</section>
+<section class="hero"><div class="container"><h2>সেবা লন্ড্রি এন্ড ড্রাই ক্লিনার্স</h2><p>আপনার মূল্যবান পোশাকের যত্ন নিই আধুনিক প্রযুক্তিতে। ফ্রি পিকআপ ও ডেলিভারি সেবা!</p><a href="https://wa.me/8801714391128?text=আমি%20বুকিং%20করতে%20চাই" class="btn" target="_blank">অনলাইন বুকিং</a><a href="tel:+8801714391128" class="btn btn-wa">📞 কল করুন</a></div></section>
 
-<div class="container section" id="services">
-  <h2 class="section-title">আমাদের সেবাসমূহ</h2>
-  <div class="cards">
-    <div class="card"><div class="card-icon">🔥👕</div><h3>আয়রন সার্ভিস</h3><div class="price">শার্ট/প্যান্ট – ১০/-</div><p>পেশাদার ইস্ত্রি সেবা</p></div>
-    <div class="card"><div class="card-icon">👕🧺</div><h3>ওয়াশ সার্ভিস</h3><div class="price">শার্ট/প্যান্ট – ৫০/-</div><p>ধোয়া, শুকানো ও পরিষ্কার</p></div>
-    <div class="card"><div class="card-icon">🧥✨</div><h3>ড্রাই ক্লিনিং</h3><div class="price">কোট – ২৫০/- | কম্বল – ৩৫০/-</div><p>রাসায়নিক প্রক্রিয়ায় নিরাপদ ক্লিনিং</p></div>
-    <div class="card"><div class="card-icon">🏠🚚</div><h3>ফ্রি পিকআপ & ডেলিভারি</h3><div class="price">ন্যূনতম ৫ পিস অর্ডারে</div><p>আপনার দরজায় সেবা</p></div>
-  </div>
-</div>
+<div class="container section" id="services"><h2 class="section-title">আমাদের সেবাসমূহ</h2><div class="cards"><div class="card"><div class="card-icon">🔥👕</div><h3>আয়রন সার্ভিস</h3><div class="price">শার্ট/প্যান্ট – ১০/-</div><p>পেশাদার ইস্ত্রি সেবা</p></div><div class="card"><div class="card-icon">👕🧺</div><h3>ওয়াশ সার্ভিস</h3><div class="price">শার্ট/প্যান্ট – ৫০/-</div><p>ধোয়া, শুকানো ও পরিষ্কার</p></div><div class="card"><div class="card-icon">🧥✨</div><h3>ড্রাই ক্লিনিং</h3><div class="price">কোট – ২৫০/- | কম্বল – ৩৫০/-</div><p>রাসায়নিক প্রক্রিয়ায় নিরাপদ ক্লিনিং</p></div><div class="card"><div class="card-icon">🏠🚚</div><h3>ফ্রি পিকআপ & ডেলিভারি</h3><div class="price">ন্যূনতম ৫ পিস অর্ডারে</div><p>আপনার দরজায় সেবা</p></div></div></div>
 
-<div class="price-list section" id="prices">
-  <div class="container">
-    <h2 class="section-title">মূল্য তালিকা (প্রতি পিস)</h2>
-    <div class="price-grid">
-      <div class="price-item"><span>শার্ট/প্যান্ট (আয়রন)</span><span class="item-price">১০ টাকা</span></div>
-      <div class="price-item"><span>শার্ট/প্যান্ট (ওয়াশ)</span><span class="item-price">৫০ টাকা</span></div>
-      <div class="price-item"><span>কোট (আয়রন)</span><span class="item-price">৫০ টাকা</span></div>
-      <div class="price-item"><span>কোট (ওয়াশ/ড্রাই ক্লিন)</span><span class="item-price">২৫০ টাকা</span></div>
-      <div class="price-item"><span>কম্বল (ওয়াশ)</span><span class="item-price">৩৫০ টাকা</span></div>
-      <div class="price-item"><span>পাঞ্জাবি/কামিজ (আয়রন)</span><span class="item-price">১০ টাকা</span></div>
-      <div class="price-item"><span>পাঞ্জাবি/কামিজ (ওয়াশ)</span><span class="item-price">৫০ টাকা</span></div>
-      <div class="price-item"><span>শাড়ি (ড্রাই ক্লিন)</span><span class="item-price">১৫০ টাকা</span></div>
-    </div>
-    <p style="text-align:center;margin-top:28px;">⭐ ৫ পিসের বেশি অর্ডারে ফ্রি হোম ডেলিভারি ⭐</p>
-  </div>
-</div>
+<div class="price-list section" id="prices"><div class="container"><h2 class="section-title">মূল্য তালিকা (প্রতি পিস)</h2><div class="price-grid"><div class="price-item"><span>শার্ট/প্যান্ট (আয়রন)</span><span>১০ টাকা</span></div><div class="price-item"><span>শার্ট/প্যান্ট (ওয়াশ)</span><span>৫০ টাকা</span></div><div class="price-item"><span>কোট (আয়রন)</span><span>৫০ টাকা</span></div><div class="price-item"><span>কোট (ওয়াশ/ড্রাই ক্লিন)</span><span>২৫০ টাকা</span></div><div class="price-item"><span>কম্বল (ওয়াশ)</span><span>৩৫০ টাকা</span></div><div class="price-item"><span>পাঞ্জাবি/কামিজ (আয়রন)</span><span>১০ টাকা</span></div><div class="price-item"><span>পাঞ্জাবি/কামিজ (ওয়াশ)</span><span>৫০ টাকা</span></div><div class="price-item"><span>শাড়ি (ড্রাই ক্লিন)</span><span>১৫০ টাকা</span></div></div><p style="text-align:center;margin-top:28px;">⭐ ৫ পিসের বেশি অর্ডারে ফ্রি হোম ডেলিভারি ⭐</p></div></div>
 
-<div class="container section">
-  <h2 class="section-title">গ্রাহকরা যা বলেন</h2>
-  <div class="testimonial">
-    <p>"সেবা লন্ড্রি থেকে নিয়মিত লন্ড্রি করাই। সময়মত ডেলিভারি, পোশাক অনেক পরিষ্কার ও সুগন্ধি থাকে। দারুণ সেবা!"</p>
-    <h4>— রুমা আক্তার, উত্তরা</h4>
-    <p>⭐⭐⭐⭐⭐</p>
-  </div>
-</div>
+<div class="container section"><h2 class="section-title">গ্রাহকরা যা বলেন</h2><div class="testimonial"><p>"সেবা লন্ড্রি থেকে নিয়মিত লন্ড্রি করাই। সময়মত ডেলিভারি, পোশাক অনেক পরিষ্কার ও সুগন্ধি থাকে। দারুণ সেবা!"</p><h4>— রুমা আক্তার, উত্তরা</h4><p>⭐⭐⭐⭐⭐</p></div></div>
 
-<div class="container section" id="contact">
-  <h2 class="section-title">যোগাযোগ করুন</h2>
-  <div class="contact-grid">
-    <div class="contact-info">
-      <p>📍 <strong>ঠিকানা:</strong> নয়ানগর, Sontek Main Rd, Dhaka</p>
-      <p>📞 <strong>ফোন:</strong> 01714391128</p>
-      <p>⏰ <strong>সময়:</strong> সকাল ৯টা – রাত ৯টা</p>
-      <p>🗺️ <a href="https://www.google.com/maps/place/23.70924,90.4433683" target="_blank" style="color:#0b8b74;font-weight:bold;">গুগল ম্যাপে দেখুন →</a></p>
-    </div>
-    <div class="map-placeholder">
-      <iframe src="https://maps.google.com/maps?q=23.7092872,90.4432116&z=17&output=embed" allowfullscreen loading="lazy"></iframe>
-    </div>
-  </div>
-</div>
+<div class="container section" id="contact"><h2 class="section-title">যোগাযোগ করুন</h2><div class="contact-grid"><div class="contact-info"><p>📍 <strong>ঠিকানা:</strong> নয়ানগর, Sontek Main Rd, Dhaka</p><p>📞 <strong>ফোন:</strong> 01714391128</p><p>⏰ <strong>সময়:</strong> সকাল ৯টা – রাত ৯টা</p><p>🗺️ <a href="https://www.google.com/maps/place/23.70924,90.4433683" target="_blank" style="color:#0b8b74;font-weight:bold;">গুগল ম্যাপে দেখুন →</a></p></div><div class="map-placeholder"><iframe src="https://maps.google.com/maps?q=23.7092872,90.4432116&z=17&output=embed" allowfullscreen loading="lazy"></iframe></div></div></div>
+<footer><div class="container"><p>&copy; ২০২৬ সেবা লন্ড্রি এন্ড ড্রাই ক্লিনার্স | নয়ানগর, Dhaka | পরিচ্ছন্নতার প্রতিশ্রুতি</p></div></footer>
 
-<footer>
-  <div class="container">
-    <p>&copy; ২০২৬ সেবা লন্ড্রি এন্ড ড্রাই ক্লিনার্স | নয়ানগর, Dhaka | পরিচ্ছন্নতার প্রতিশ্রুতি</p>
-  </div>
-</footer>
-
-<!-- ===== লগইন / রেজিস্ট্রেশন মডাল ===== -->
+<!-- Auth Modal (Clean) -->
 <div id="authModal" class="modal">
   <div class="auth-modal-inner">
-    <button class="auth-close-btn" onclick="closeModal('authModal')">✕</button>
-    <h2>🔐 লগইন / রেজিস্ট্রেশন</h2>
+    <button class="close-btn" onclick="closeModal('authModal')">✕</button>
+    <h2 style="text-align:center; margin-bottom:20px;">🔐 অ্যাক্সেস</h2>
     <div class="auth-tabs">
-      <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">লগইন</button>
-      <button class="auth-tab" id="tabRegister" onclick="switchAuthTab('register')">নতুন অ্যাকাউন্ট</button>
+      <button class="auth-tab active" onclick="switchAuthTab('login')">লগইন</button>
+      <button class="auth-tab" onclick="switchAuthTab('register')">নতুন অ্যাকাউন্ট</button>
     </div>
-
-    <!-- লগইন ফর্ম -->
     <div id="loginForm">
-      <div class="auth-field">
-        <label>মোবাইল নম্বর</label>
-        <input type="tel" id="loginPhone" placeholder="01XXXXXXXXX">
-      </div>
-      <div class="auth-field">
-        <label>পাসওয়ার্ড</label>
-        <input type="password" id="loginPass" placeholder="পাসওয়ার্ড">
-      </div>
+      <div class="auth-field"><label>মোবাইল নম্বর</label><input type="tel" id="loginPhone" placeholder="01XXXXXXXXX"></div>
+      <div class="auth-field"><label>পাসওয়ার্ড</label><input type="password" id="loginPass" placeholder="পাসওয়ার্ড"></div>
       <button class="auth-submit-btn" onclick="doLogin()">✅ লগইন করুন</button>
-      <div id="loginMsg" class="auth-msg" style="display:none;"></div>
-
-      <!-- এডমিন লগইন আলাদা -->
-      <div class="admin-login-section">
-        <h4>🔑 এডমিন (দোকানদার) লগইন</h4>
-        <div class="auth-field">
-          <label>এডমিন পাসওয়ার্ড</label>
-          <input type="password" id="adminPass" placeholder="এডমিন পাসওয়ার্ড">
-        </div>
-        <button class="auth-submit-btn" style="background:#c0392b;" onclick="doAdminLogin()">🔑 এডমিন লগইন</button>
-        <div id="adminLoginMsg" class="auth-msg" style="display:none;"></div>
+      <div id="loginMsg" style="font-size:0.8rem; margin-top:8px; text-align:center; color:red;"></div>
+      <!-- Admin section inside a card -->
+      <div class="admin-card">
+        <h4>🔑 এডমিন অ্যাক্সেস (দোকানদার)</h4>
+        <div class="auth-field"><label>এডমিন পাসওয়ার্ড</label><input type="password" id="adminPass" placeholder="পাসওয়ার্ড"></div>
+        <button class="auth-submit-btn" style="background:#c0392b;" onclick="doAdminLogin()">🔓 এডমিন লগইন</button>
+        <div id="adminLoginMsg" style="font-size:0.8rem; margin-top:6px; color:red;"></div>
       </div>
     </div>
-
-    <!-- রেজিস্ট্রেশন ফর্ম -->
     <div id="registerForm" style="display:none;">
-      <div class="auth-field">
-        <label>আপনার নাম</label>
-        <input type="text" id="regName" placeholder="পুরো নাম">
-      </div>
-      <div class="auth-field">
-        <label>মোবাইল নম্বর</label>
-        <input type="tel" id="regPhone" placeholder="01XXXXXXXXX">
-      </div>
-      <div class="auth-field">
-        <label>ঠিকানা</label>
-        <input type="text" id="regAddress" placeholder="বাসার ঠিকানা">
-      </div>
-      <div class="auth-field">
-        <label>পাসওয়ার্ড</label>
-        <input type="password" id="regPass" placeholder="পাসওয়ার্ড তৈরি করুন">
-      </div>
-      <div class="auth-field">
-        <label>পাসওয়ার্ড নিশ্চিত করুন</label>
-        <input type="password" id="regPass2" placeholder="আবার পাসওয়ার্ড দিন">
-      </div>
+      <div class="auth-field"><label>আপনার নাম</label><input type="text" id="regName" placeholder="পুরো নাম"></div>
+      <div class="auth-field"><label>মোবাইল নম্বর</label><input type="tel" id="regPhone" placeholder="01XXXXXXXXX"></div>
+      <div class="auth-field"><label>ঠিকানা</label><input type="text" id="regAddress" placeholder="বাসার ঠিকানা"></div>
+      <div class="auth-field"><label>পাসওয়ার্ড</label><input type="password" id="regPass" placeholder="পাসওয়ার্ড তৈরি করুন"></div>
+      <div class="auth-field"><label>পাসওয়ার্ড নিশ্চিত করুন</label><input type="password" id="regPass2" placeholder="আবার পাসওয়ার্ড দিন"></div>
       <button class="auth-submit-btn" onclick="doRegister()">✅ রেজিস্ট্রেশন করুন</button>
-      <div id="registerMsg" class="auth-msg" style="display:none;"></div>
+      <div id="registerMsg" style="font-size:0.8rem; margin-top:8px; text-align:center; color:red;"></div>
     </div>
   </div>
 </div>
 
-<!-- ===== কাস্টমার অর্ডার মডাল ===== -->
-<div id="customerOrderModal" class="modal">
-  <div class="customer-order-inner">
-    <button class="auth-close-btn" onclick="closeModal('customerOrderModal')">✕</button>
-    <h2>📦 নতুন অর্ডার দিন</h2>
-    <div class="order-field">
-      <label>সার্ভিস ধরন</label>
-      <div class="order-service-checks">
-        <label><input type="checkbox" id="co_iron"> 🔥 আয়রন</label>
-        <label><input type="checkbox" id="co_wash"> 🧺 ওয়াশ</label>
-        <label><input type="checkbox" id="co_dry"> ✨ ড্রাই ক্লিন</label>
-      </div>
-    </div>
-    <div class="price-list section" id="prices">
-  <div class="container">
-    <h2 class="section-title">মূল্য তালিকা (প্রতি পিস)</h2>
-    <div class="price-grid">
-      <div class="price-item"><span>শার্ট/প্যান্ট (আয়রন)</span><span class="item-price">১০ টাকা</span></div>
-      <div class="price-item"><span>শার্ট/প্যান্ট (ওয়াশ)</span><span class="item-price">৫০ টাকা</span></div>
-      <div class="price-item"><span>কোট (আয়রন)</span><span class="item-price">৫০ টাকা</span></div>
-      <div class="price-item"><span>কোট (ওয়াশ/ড্রাই ক্লিন)</span><span class="item-price">২৫০ টাকা</span></div>
-      <div class="price-item"><span>কম্বল (ওয়াশ)</span><span class="item-price">৩৫০ টাকা</span></div>
-      <div class="price-item"><span>পাঞ্জাবি/কামিজ (আয়রন)</span><span class="item-price">১০ টাকা</span></div>
-      <div class="price-item"><span>পাঞ্জাবি/কামিজ (ওয়াশ)</span><span class="item-price">৫০ টাকা</span></div>
-      <div class="price-item"><span>শাড়ি (ড্রাই ক্লিন)</span><span class="item-price">১৫০ টাকা</span></div>
-    </div>
-    <p style="text-align:center;margin-top:28px;">⭐ ৫ পিসের বেশি অর্ডারে ফ্রি হোম ডেলিভারি ⭐</p>
-  </div>
-</div>
-      <label>বিশেষ নির্দেশনা (ঐচ্ছিক)</label>
-      <input type="text" id="co_note" placeholder="কোনো বিশেষ কথা থাকলে...">
-    </div>
-    <button class="order-submit-btn" onclick="submitCustomerOrder()">📤 অর্ডার পাঠান</button>
-    <div id="orderMsg" class="auth-msg" style="display:none;"></div>
-  </div>
-</div>
+<!-- Other modals (simplified but functional) -->
+<div id="cashMemoModal" class="modal"><div class="cash-memo"><div class="memo-header"><h3>🧾 সেবা লন্ড্রি</h3><p>নয়ানগর, ঢাকা</p></div><div class="memo-info-row"><span>মেমো নং:</span><span id="memoNumber"></span></div><div class="memo-info-row"><span>তারিখ:</span><span id="memoDate"></span></div><div class="memo-info-row"><span>গ্রাহকের নাম:</span><input type="text" id="customerName"></div><div class="memo-info-row"><span>ফোন:</span><input type="text" id="customerPhone"></div><div class="service-section"><label><input type="checkbox" id="serviceIron"> আয়রন</label> <label><input type="checkbox" id="serviceWash"> ওয়াশ</label> <label><input type="checkbox" id="serviceDryClean"> ড্রাই ক্লিন</label></div><table class="items-table"><thead><tr><th>কাপড়</th><th>সার্ভিস</th><th>পরিমাণ</th><th>দর</th><th>মোট</th><th></th></tr></thead><tbody id="itemsTableBody"></tbody></table><button id="addRowBtn" class="add-item-btn">+ আরও যোগ করুন</button><div class="total-row"><span>মোট:</span><span id="grandTotal">০</span><span> টাকা</span></div><div class="action-buttons"><button id="saveMemoBtn" class="memo-btn save-memo">💾 সংরক্ষণ</button><button id="printMemoBtn" class="memo-btn print-memo">🖨️ প্রিন্ট</button><button id="whatsappMemoBtn" class="memo-btn whatsapp-memo">📲 WhatsApp</button><button id="closeMemoBtn" class="memo-btn close-memo">✖ বন্ধ</button></div></div></div>
 
-<!-- ===== আমার অর্ডার মডাল ===== -->
-<div id="myOrdersModal" class="modal">
-  <div class="my-orders-inner">
-    <button class="auth-close-btn" onclick="closeModal('myOrdersModal')">✕</button>
-    <h2>📋 আমার অর্ডার</h2>
-    <div id="myOrdersList"></div>
-  </div>
-</div>
+<div id="historyModal" class="modal"><div class="history-modal-inner"><h2>📋 মেমো ইতিহাস</h2><div style="display:flex; gap:10px; margin:10px 0;"><button class="filter-btn" id="tabRecentBtn">🗓️ তিন মাসের মেমো</button><button class="filter-btn" id="tabOldBtn">🗃️ পুরনো মেমো</button></div><div class="filter-buttons"><button class="filter-btn" id="filterAllBtn">সব</button><button class="filter-btn" id="filterPendingBtn">⏳ পেন্ডিং</button><button class="filter-btn" id="filterDoneBtn">✅ ডেলিভারি হয়েছে</button></div><div><input type="text" id="historySearch" placeholder="🔍 নাম বা মোবাইল দিয়ে খুঁজুন..." style="width:100%; padding:10px; border-radius:30px; border:1px solid #ccc; margin-bottom:15px;"></div><div id="historyList"></div><button class="close-memo" style="margin-top:15px; width:100%;" onclick="closeModal('historyModal')">✖ বন্ধ করুন</button></div></div>
 
-<!-- ===== এডমিন অর্ডার পেনেল ===== -->
-<div id="adminOrdersModal" class="modal">
-  <div class="admin-orders-inner">
-    <button class="auth-close-btn" onclick="closeModal('adminOrdersModal')">✕</button>
-    <h2>📬 কাস্টমার অর্ডার সমূহ</h2>
-    <div id="adminOrdersList"></div>
-  </div>
-</div>
+<div id="customerOrderModal" class="modal"><div class="customer-order-inner"><h2>📦 নতুন অর্ডার</h2><div class="service-section"><label><input type="checkbox" id="coServiceIron"> আয়রন</label> <label><input type="checkbox" id="coServiceWash"> ওয়াশ</label> <label><input type="checkbox" id="coServiceDry"> ড্রাই ক্লিন</label></div><table class="items-table"><thead><tr><th>কাপড়</th><th>সার্ভিস</th><th>পরিমাণ</th><th>দর</th><th>মোট</th><th></th></tr></thead><tbody id="coItemsTableBody"></tbody></table><button id="coAddRowBtn" class="add-item-btn">+ আইটেম যোগ করুন</button><div class="total-row"><span>মোট:</span><span id="coGrandTotal">০</span><span> টাকা</span></div><div class="order-field"><label>পিকআপ ঠিকানা</label><input type="text" id="co_address"></div><div class="order-field"><label>বিশেষ নির্দেশনা</label><input type="text" id="co_note"></div><button class="order-submit-btn" onclick="submitCustomerOrderEnhanced()">📤 অর্ডার পাঠান</button><div id="orderMsg"></div></div></div>
 
-<!-- ===== ক্যাশ মেমো মডাল ===== -->
-<div id="cashMemoModal" class="modal">
-  <div class="cash-memo">
-    <div class="memo-header">
-      <div class="shop-name-memo">🧾 সেবা লন্ড্রি এন্ড ড্রাই ক্লিনার্স</div>
-      <div style="font-size:0.78rem;">নয়ানগর, Sontek Main Rd, Dhaka</div>
-      <div style="font-size:0.75rem;color:#555;">লন্ড্রি ও ড্রাই ক্লিনিং</div>
-    </div>
-    <div class="memo-info-row">
-      <span class="memo-label">মেমো নং:</span>
-      <span id="memoNumber" style="font-weight:bold;">MEMO-1001</span>
-    </div>
-    <div class="memo-info-row">
-      <span class="memo-label">তারিখ:</span>
-      <span id="memoDate"></span>
-    </div>
-    <div class="memo-info-row">
-      <span class="memo-label">গ্রাহকের নাম:</span>
-      <input type="text" id="customerName" class="customer-input" placeholder="নাম টাইপ করুন...">
-    </div>
-    <div class="memo-info-row">
-      <span class="memo-label">ফোন নম্বর:</span>
-      <input type="text" id="customerPhone" class="customer-input" placeholder="মোবাইল নম্বর...">
-    </div>
-    <div class="delivery-row">
-      <span class="memo-label">ডেলিভারি:</span>
-      <span id="deliveryBadge" class="delivery-badge-pending">⏳ পেন্ডিং</span>
-      <button id="toggleDeliveryBtn" class="delivery-toggle">✔ ডেলিভারি দেওয়া হয়েছে</button>
-    </div>
-    <div class="service-section">
-      <div class="service-section-title">সার্ভিস ধরন নির্বাচন করুন:</div>
-      <div class="service-type-row">
-        <label id="lbl-iron"><input type="checkbox" id="serviceIron"> 🔥 আয়রন</label>
-        <label id="lbl-wash"><input type="checkbox" id="serviceWash"> 🧺 ওয়াশ</label>
-        <label id="lbl-dry"><input type="checkbox" id="serviceDryClean"> ✨ ড্রাই ক্লিন</label>
-      </div>
-    </div>
-    <table class="items-table">
-      <thead>
-        <tr><th>কাপড়</th><th>সার্ভিস</th><th>পরিমাণ</th><th>দর (৳)</th><th>মোট</th><th></th></tr>
-      </thead>
-      <tbody id="itemsTableBody"></tbody>
-    </table>
-    <button id="addRowBtn" class="add-item-btn">+ আরও যোগ করুন</button>
-    <div class="total-row">
-      <span>মোট:</span>
-      <span id="grandTotal">০</span>
-      <span>টাকা</span>
-    </div>
-    <div class="action-buttons">
-      <button id="saveMemoBtn" class="memo-btn save-memo">💾 সংরক্ষণ</button>
-      <button id="printMemoBtn" class="memo-btn print-memo">🖨️ প্রিন্ট</button>
-      <button id="whatsappMemoBtn" class="memo-btn whatsapp-memo">📲 WhatsApp</button>
-      <button id="closeMemoBtn" class="memo-btn close-memo">✖ বন্ধ</button>
-    </div>
-    <div class="memo-footer">★ ফ্রি পিকআপ ও ডেলিভারি (৫ পিসের বেশি) ★ ধন্যবাদ আপনার সেবায়!</div>
-  </div>
-</div>
-
-<!-- ===== ইতিহাস মডাল ===== -->
-<div id="historyModal" class="modal">
-  <div class="history-modal-inner">
-    <h2>📋 মেমো ইতিহাস</h2>
-    <div class="history-tabs">
-      <button class="history-tab active" id="tabRecent" onclick="switchTab('recent')">🗓️ তিন মাসের মেমো</button>
-      <button class="history-tab" id="tabOld" onclick="switchTab('old')">🗃️ পুরনো মেমো</button>
-    </div>
-    <div class="history-lifetime-note" id="historyNote">সর্বশেষ ৩ মাসের মেমো দেখাচ্ছে।</div>
-    <div class="search-bar">
-      <input type="text" id="historySearch" placeholder="🔍 নাম বা মোবাইল নম্বর দিয়ে খুঁজুন..." oninput="renderHistory()">
-    </div>
-    <div class="filter-row">
-      <button class="filter-btn active-all" id="filterAll" onclick="setFilter('all')">সব</button>
-      <button class="filter-btn" id="filterPending" onclick="setFilter('pending')">⏳ পেন্ডিং</button>
-      <button class="filter-btn" id="filterDone" onclick="setFilter('done')">✅ ডেলিভারি দেওয়া হয়েছে</button>
-    </div>
-    <div id="historyList"></div>
-    <button class="btn-close-history" onclick="closeModal('historyModal')">✖ বন্ধ করুন</button>
-  </div>
-</div>
-
-<!-- ===== ভিউ মেমো মডাল ===== -->
-<div id="viewMemoModal" class="modal">
-  <div class="view-memo-modal-inner">
-    <div id="viewMemoContent"></div>
-    <div style="display:flex;gap:8px;margin-top:12px;">
-      <button onclick="printViewMemo()" class="memo-btn print-memo" style="flex:1;">🖨️ প্রিন্ট</button>
-      <button onclick="closeModal('viewMemoModal')" class="memo-btn close-memo" style="flex:1;">✖ বন্ধ</button>
-    </div>
-  </div>
-</div>
-
-<datalist id="productDatalist">
-  <option value="শার্ট"><option value="প্যান্ট"><option value="পাঞ্জাবি"><option value="ফতুয়া">
-  <option value="স্যালোয়ার"><option value="কামিজ"><option value="ওড়না"><option value="শাল">
-  <option value="কম্বল"><option value="কোট"><option value="সুট"><option value="ব্লেজার">
-  <option value="শাড়ি"><option value="পায়জামা"><option value="বেডশিট"><option value="তোয়ালে">
-</datalist>
+<div id="myOrdersModal" class="modal"><div class="my-orders-inner"><h2>📋 আমার অর্ডার</h2><div id="myOrdersList"></div><button class="close-memo" style="margin-top:15px;" onclick="closeModal('myOrdersModal')">বন্ধ</button></div></div>
+<div id="adminOrdersModal" class="modal"><div class="admin-orders-inner"><h2>📬 কাস্টমার অর্ডার</h2><div id="adminOrdersList"></div><button class="close-memo" style="margin-top:15px;" onclick="closeModal('adminOrdersModal')">বন্ধ</button></div></div>
+<div id="viewMemoModal" class="modal"><div class="view-memo-modal-inner"><div id="viewMemoContent"></div><button onclick="closeModal('viewMemoModal')">বন্ধ</button></div></div>
 
 <script>
-// ================================================================
-// ===== কনফিগ =====
-// ================================================================
-const ADMIN_PASSWORD = 'seba2026'; // এডমিন পাসওয়ার্ড পরিবর্তন করুন
-const USERS_KEY = 'seba_users_v1';
-const SESSION_KEY = 'seba_session_v1';
-const STORAGE_KEY = 'loundry_memos_v2';
-const ORDERS_KEY = 'seba_customer_orders_v1';
+  // ======================== DATA LAYER ========================
+  const ADMIN_PASSWORD = 'seba2026';
+  const USERS_KEY = 'seba_users_v1';
+  const SESSION_KEY = 'seba_session_v1';
+  const STORAGE_KEY = 'loundry_memos_v2';
+  const ORDERS_KEY = 'seba_customer_orders_v1';
 
-// ================================================================
-// ===== ইউজার ম্যানেজমেন্ট =====
-// ================================================================
-function getUsers() {
-  try { return JSON.parse(localStorage.getItem(USERS_KEY) || '[]'); } catch(e) { return []; }
-}
-function saveUsers(u) { localStorage.setItem(USERS_KEY, JSON.stringify(u)); }
-function getSession() {
-  try { return JSON.parse(localStorage.getItem(SESSION_KEY) || 'null'); } catch(e) { return null; }
-}
-function saveSession(s) { localStorage.setItem(SESSION_KEY, JSON.stringify(s)); }
-function clearSession() { localStorage.removeItem(SESSION_KEY); }
-
-function currentUser() { return getSession(); }
-function isAdmin() { const s = getSession(); return s && s.role === 'admin'; }
-function isCustomer() { const s = getSession(); return s && s.role === 'customer'; }
-function isLoggedIn() { return !!getSession(); }
-
-// ================================================================
-// ===== UI আপডেট =====
-// ================================================================
-function updateUI() {
-  const session = getSession();
-  const area = document.getElementById('navAuthArea');
-
-  if (!session) {
-    // লগইন করা নেই
-    area.innerHTML = `
-      <button class="btn-login-nav" onclick="openModal('authModal')">🔐 লগইন / রেজিস্ট্রেশন</button>`;
-    document.getElementById('openCashMemoBtn').style.display = 'none';
-    document.getElementById('openHistoryBtn').style.display = 'none';
-    document.getElementById('customerOrderBtn').style.display = 'none';
-    document.getElementById('customerMyOrdersBtn').style.display = 'none';
-
-  } else if (session.role === 'admin') {
-    area.innerHTML = `
-      <span class="user-greeting">👑 এডমিন</span>
-      <button class="btn-login-nav" style="background:#3d5a80;" onclick="openAdminOrdersModal()">📬 অর্ডার <span id="newOrderBadge"></span></button>
-      <button class="btn-logout-nav" onclick="doLogout()">লগআউট</button>`;
-    document.getElementById('openCashMemoBtn').style.display = 'block';
-    document.getElementById('openHistoryBtn').style.display = 'block';
-    document.getElementById('customerOrderBtn').style.display = 'none';
-    document.getElementById('customerMyOrdersBtn').style.display = 'none';
-    updateNewOrderBadge();
-
-  } else if (session.role === 'customer') {
-    area.innerHTML = `
-      <span class="user-greeting">👤 ${session.name}</span>
-      <button class="btn-logout-nav" onclick="doLogout()">লগআউট</button>`;
-    document.getElementById('openCashMemoBtn').style.display = 'none';
-    document.getElementById('openHistoryBtn').style.display = 'none';
-    document.getElementById('customerOrderBtn').style.display = 'block';
-    document.getElementById('customerMyOrdersBtn').style.display = 'block';
+  const priceDB = { "শার্ট":{iron:10,wash:50,dry:50},"প্যান্ট":{iron:10,wash:50,dry:50},"পাঞ্জাবি":{iron:10,wash:50,dry:60},"কামিজ":{iron:10,wash:50,dry:60},"কোট":{iron:50,wash:250,dry:250},"কম্বল":{iron:30,wash:350,dry:400},"শাড়ি":{iron:30,wash:100,dry:150},"তোয়ালে":{iron:10,wash:40,dry:40} };
+  function getDefaultPrice(name, svc){ let row=priceDB[name.trim()]; if(!row) return 10; if(svc==='wash') return row.wash; if(svc==='dry') return row.dry; return row.iron; }
+  function getUsers(){ return JSON.parse(localStorage.getItem(USERS_KEY)||'[]'); }
+  function saveUsers(u){ localStorage.setItem(USERS_KEY,JSON.stringify(u)); }
+  function getSession(){ return JSON.parse(localStorage.getItem(SESSION_KEY)||'null'); }
+  function saveSession(s){ localStorage.setItem(SESSION_KEY,JSON.stringify(s)); }
+  function clearSession(){ localStorage.removeItem(SESSION_KEY); }
+  function isAdmin(){ let s=getSession(); return s && s.role==='admin'; }
+  function isCustomer(){ let s=getSession(); return s && s.role==='customer'; }
+  function loadMemos(){ return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]'); }
+  function saveMemos(m){ localStorage.setItem(STORAGE_KEY,JSON.stringify(m)); }
+  function getOrders(){ return JSON.parse(localStorage.getItem(ORDERS_KEY)||'[]'); }
+  function saveOrders(o){ localStorage.setItem(ORDERS_KEY,JSON.stringify(o)); }
+  
+  // seed a demo memo if empty
+  if(loadMemos().length===0){
+    let demo = { id:'m_demo1', memoNo:'MEMO-1001', date:new Date().toLocaleDateString('bn-BD'), savedAt:new Date().toISOString(), name:'রুমা আক্তার', phone:'017xxxxxxx', services:['iron','wash'], delivery:'pending', items:[{name:'শার্ট',svc:'iron',qty:2,price:10,total:20},{name:'প্যান্ট',svc:'wash',qty:1,price:50,total:50}], total:70 };
+    saveMemos([demo]);
   }
-}
 
-function updateNewOrderBadge() {
-  const orders = getOrders().filter(o => o.status === 'pending');
-  const badge = document.getElementById('newOrderBadge');
-  if (badge) badge.innerHTML = orders.length > 0 ? `<span class="new-order-badge">${orders.length}</span>` : '';
-}
-
-// ================================================================
-// ===== মডাল হেল্পার =====
-// ================================================================
-function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-
-// ================================================================
-// ===== অথ ট্যাব =====
-// ================================================================
-function switchAuthTab(tab) {
-  document.getElementById('loginForm').style.display = tab === 'login' ? 'block' : 'none';
-  document.getElementById('registerForm').style.display = tab === 'register' ? 'block' : 'none';
-  document.getElementById('tabLogin').className = 'auth-tab' + (tab === 'login' ? ' active' : '');
-  document.getElementById('tabRegister').className = 'auth-tab' + (tab === 'register' ? ' active' : '');
-}
-
-function showMsg(id, msg, type) {
-  const el = document.getElementById(id);
-  el.style.display = 'block';
-  el.className = 'auth-msg ' + type;
-  el.textContent = msg;
-}
-
-// ================================================================
-// ===== লগইন / রেজিস্ট্রেশন =====
-// ================================================================
-function doRegister() {
-  const name = document.getElementById('regName').value.trim();
-  const phone = document.getElementById('regPhone').value.trim();
-  const address = document.getElementById('regAddress').value.trim();
-  const pass = document.getElementById('regPass').value;
-  const pass2 = document.getElementById('regPass2').value;
-
-  if (!name || !phone || !pass) return showMsg('registerMsg', '❌ সব তথ্য পূরণ করুন', 'error');
-  if (!/^01[3-9]\d{8}$/.test(phone)) return showMsg('registerMsg', '❌ সঠিক মোবাইল নম্বর দিন', 'error');
-  if (pass.length < 6) return showMsg('registerMsg', '❌ পাসওয়ার্ড কমপক্ষে ৬ অক্ষর হতে হবে', 'error');
-  if (pass !== pass2) return showMsg('registerMsg', '❌ পাসওয়ার্ড মিলছে না', 'error');
-
-  const users = getUsers();
-  if (users.find(u => u.phone === phone)) return showMsg('registerMsg', '❌ এই নম্বরে আগেই অ্যাকাউন্ট আছে', 'error');
-
-  users.push({ id: 'u_' + Date.now(), name, phone, address, pass, role: 'customer' });
-  saveUsers(users);
-  saveSession({ id: users[users.length-1].id, name, phone, address, role: 'customer' });
-  showMsg('registerMsg', '✅ রেজিস্ট্রেশন সফল! স্বাগতম।', 'success');
-  setTimeout(() => { closeModal('authModal'); updateUI(); }, 1000);
-}
-
-function doLogin() {
-  const phone = document.getElementById('loginPhone').value.trim();
-  const pass = document.getElementById('loginPass').value;
-  if (!phone || !pass) return showMsg('loginMsg', '❌ নম্বর ও পাসওয়ার্ড দিন', 'error');
-  const users = getUsers();
-  const user = users.find(u => u.phone === phone && u.pass === pass);
-  if (!user) return showMsg('loginMsg', '❌ নম্বর বা পাসওয়ার্ড ভুল', 'error');
-  saveSession({ id: user.id, name: user.name, phone: user.phone, address: user.address, role: 'customer' });
-  showMsg('loginMsg', '✅ লগইন সফল! স্বাগতম ' + user.name, 'success');
-  setTimeout(() => { closeModal('authModal'); updateUI(); }, 800);
-}
-
-function doAdminLogin() {
-  const pass = document.getElementById('adminPass').value;
-  if (pass === ADMIN_PASSWORD) {
-    saveSession({ id: 'admin', name: 'এডমিন', role: 'admin' });
-    showMsg('adminLoginMsg', '✅ এডমিন লগইন সফল!', 'success');
-    setTimeout(() => { closeModal('authModal'); updateUI(); }, 800);
-  } else {
-    showMsg('adminLoginMsg', '❌ পাসওয়ার্ড ভুল', 'error');
+  // ========== UI Helpers ==========
+  function openModal(id){ document.getElementById(id).style.display='flex'; }
+  function closeModal(id){ document.getElementById(id).style.display='none'; }
+  function switchAuthTab(tab){
+    document.getElementById('loginForm').style.display=tab==='login'?'block':'none';
+    document.getElementById('registerForm').style.display=tab==='register'?'block':'none';
+    document.querySelectorAll('.auth-tab').forEach((btn,i)=>{ if((tab==='login' && i===0)||(tab==='register' && i===1)) btn.classList.add('active'); else btn.classList.remove('active'); });
   }
-}
+  function updateUI(){
+    const s=getSession(); const area=document.getElementById('navAuthArea');
+    if(!s){
+      area.innerHTML='<button class="btn-login-nav" onclick="openModal(\'authModal\')">🔐 লগইন / রেজিস্ট্রেশন</button>';
+      document.getElementById('openCashMemoBtn').style.display='none';
+      document.getElementById('openHistoryBtn').style.display='none';
+      document.getElementById('customerOrderBtn').style.display='none';
+      document.getElementById('customerMyOrdersBtn').style.display='none';
+    } else if(s.role==='admin'){
+      area.innerHTML=`<span class="user-greeting">👑 এডমিন</span><button class="btn-logout-nav" onclick="doLogout()">লগআউট</button>`;
+      document.getElementById('openCashMemoBtn').style.display='block';
+      document.getElementById('openHistoryBtn').style.display='block';
+      document.getElementById('customerOrderBtn').style.display='none';
+      document.getElementById('customerMyOrdersBtn').style.display='none';
+    } else {
+      area.innerHTML=`<span class="user-greeting">👤 ${s.name}</span><button class="btn-logout-nav" onclick="doLogout()">লগআউট</button>`;
+      document.getElementById('openCashMemoBtn').style.display='none';
+      document.getElementById('openHistoryBtn').style.display='none';
+      document.getElementById('customerOrderBtn').style.display='block';
+      document.getElementById('customerMyOrdersBtn').style.display='block';
+    }
+  }
 
-function doLogout() {
-  clearSession();
+  // ========== Auth ==========
+  function doLogin(){
+    let phone=document.getElementById('loginPhone').value.trim();
+    let pass=document.getElementById('loginPass').value;
+    let user=getUsers().find(u=>u.phone===phone && u.pass===pass);
+    if(user){
+      saveSession({id:user.id,name:user.name,phone:user.phone,address:user.address,role:'customer'});
+      closeModal('authModal'); updateUI();
+    } else document.getElementById('loginMsg').innerText='নম্বর বা পাসওয়ার্ড ভুল';
+  }
+  function doAdminLogin(){
+    if(document.getElementById('adminPass').value===ADMIN_PASSWORD){
+      saveSession({id:'admin',name:'এডমিন',role:'admin'});
+      closeModal('authModal'); updateUI();
+    } else document.getElementById('adminLoginMsg').innerText='পাসওয়ার্ড ভুল';
+  }
+  function doRegister(){
+    let name=document.getElementById('regName').value.trim();
+    let phone=document.getElementById('regPhone').value.trim();
+    let addr=document.getElementById('regAddress').value.trim();
+    let pass=document.getElementById('regPass').value;
+    let pass2=document.getElementById('regPass2').value;
+    if(!name || !phone || !pass) { alert('সব তথ্য দিন'); return; }
+    if(pass!==pass2) { alert('পাসওয়ার্ড মিলছে না'); return; }
+    let users=getUsers();
+    if(users.find(u=>u.phone===phone)) { alert('এই নম্বর already আছে'); return; }
+    users.push({id:'u'+Date.now(),name,phone,address:addr,pass,role:'customer'});
+    saveUsers(users);
+    alert('রেজিস্ট্রেশন সফল! এখন লগইন করুন');
+    switchAuthTab('login');
+  }
+  function doLogout(){ clearSession(); updateUI(); }
+
+  // ========== Cash Memo Logic (simplified) ==========
+  let memoCounter=parseInt(localStorage.getItem('loundry_memo_counter')||'1000');
+  function nextMemoNumber(){ memoCounter++; localStorage.setItem('loundry_memo_counter',memoCounter); return 'MEMO-'+memoCounter; }
+  let editingMemoId=null;
+  function buildRow(name='',svc='iron',qty=1,price=0,auto=true){
+    let tr=document.createElement('tr');
+    let actualPrice=auto?getDefaultPrice(name,svc):price;
+    let line=qty*actualPrice;
+    tr.innerHTML=`<td><input type="text" class="item-name-input" list="productDatalist" value="${name}" oninput="updateRowPrice(this)"></td>
+    <td><select class="item-svc-select" onchange="updateRowPrice(this)"><option value="iron" ${svc==='iron'?'selected':''}>আয়রন</option><option value="wash" ${svc==='wash'?'selected':''}>ওয়াশ</option><option value="dry" ${svc==='dry'?'selected':''}>ড্রাই ক্লিন</option></select></td>
+    <td><input type="number" class="item-qty-input" value="${qty}" min="1" oninput="updateTotal()"></td>
+    <td><input type="number" class="item-price-input" value="${actualPrice}" oninput="updateTotal()"></td>
+    <td class="item-total">${line}</td>
+    <td><button class="remove-item-btn" onclick="removeRow(this)">✖</button></td>`;
+    return tr;
+  }
+  window.updateRowPrice = function(el){
+    let row=el.closest('tr');
+    let name=row.querySelector('.item-name-input').value;
+    let svc=row.querySelector('.item-svc-select').value;
+    let priceInput=row.querySelector('.item-price-input');
+    priceInput.value=getDefaultPrice(name,svc);
+    updateTotal();
+  };
+  window.removeRow=function(btn){ if(document.getElementById('itemsTableBody').children.length>1) btn.closest('tr').remove(); updateTotal(); };
+  function updateTotal(){
+    let t=0;
+    document.querySelectorAll('#itemsTableBody tr').forEach(row=>{
+      let qty=parseInt(row.querySelector('.item-qty-input')?.value)||0;
+      let price=parseFloat(row.querySelector('.item-price-input')?.value)||0;
+      let span=row.querySelector('.item-total');
+      let line=qty*price;
+      if(span) span.textContent=line;
+      t+=line;
+    });
+    document.getElementById('grandTotal').textContent=t;
+  }
+  function addNewRow(){
+    let svc=document.querySelector('#serviceIron:checked')?'iron':document.querySelector('#serviceWash:checked')?'wash':'iron';
+    document.getElementById('itemsTableBody').appendChild(buildRow('',svc,1,10,true));
+    updateTotal();
+  }
+  function openMemoModal(edit=null){
+    editingMemoId=null;
+    document.getElementById('memoDate').textContent=new Date().toLocaleDateString('bn-BD');
+    document.getElementById('customerName').value='';
+    document.getElementById('customerPhone').value='';
+    document.getElementById('itemsTableBody').innerHTML='';
+    if(edit){
+      editingMemoId=edit.id;
+      document.getElementById('memoNumber').textContent=edit.memoNo;
+      document.getElementById('memoDate').textContent=edit.date;
+      document.getElementById('customerName').value=edit.name;
+      document.getElementById('customerPhone').value=edit.phone||'';
+      edit.items.forEach(it=>document.getElementById('itemsTableBody').appendChild(buildRow(it.name,it.svc,it.qty,it.price,false)));
+    } else {
+      document.getElementById('memoNumber').textContent=nextMemoNumber();
+      document.getElementById('itemsTableBody').appendChild(buildRow('শার্ট','iron',1,10,true));
+    }
+    updateTotal();
+    openModal('cashMemoModal');
+  }
+  function collectMemoData(){
+    let items=[];
+    document.querySelectorAll('#itemsTableBody tr').forEach(row=>{
+      let name=row.querySelector('.item-name-input')?.value;
+      let svc=row.querySelector('.item-svc-select')?.value;
+      let qty=parseInt(row.querySelector('.item-qty-input')?.value)||0;
+      let price=parseFloat(row.querySelector('.item-price-input')?.value)||0;
+      if(name) items.push({name,svc,qty,price,total:qty*price});
+    });
+    let services=[];
+    if(document.getElementById('serviceIron').checked) services.push('iron');
+    if(document.getElementById('serviceWash').checked) services.push('wash');
+    if(document.getElementById('serviceDryClean').checked) services.push('dry');
+    return { id:editingMemoId||('m_'+Date.now()), memoNo:document.getElementById('memoNumber').textContent, date:document.getElementById('memoDate').textContent, savedAt:new Date().toISOString(), name:document.getElementById('customerName').value||'নাম নেই', phone:document.getElementById('customerPhone').value, services, delivery:'pending', items, total:parseInt(document.getElementById('grandTotal').textContent)||0 };
+  }
+  document.getElementById('saveMemoBtn')?.addEventListener('click',()=>{
+    let data=collectMemoData();
+    if(!data.name || data.name==='নাম নেই'){ alert('গ্রাহকের নাম দিন'); return; }
+    let memos=loadMemos();
+    if(editingMemoId){ let idx=memos.findIndex(m=>m.id===editingMemoId); if(idx!==-1) memos[idx]=data; else memos.push(data); }
+    else memos.push(data);
+    saveMemos(memos);
+    alert('সংরক্ষিত'); closeModal('cashMemoModal');
+  });
+  document.getElementById('printMemoBtn')?.addEventListener('click',()=>{ let d=collectMemoData(); alert('প্রিন্ট ফাংশন সংক্ষেপে'); });
+  document.getElementById('closeMemoBtn')?.addEventListener('click',()=>closeModal('cashMemoModal'));
+  document.getElementById('openCashMemoBtn')?.addEventListener('click',()=>{ if(!isAdmin()){ alert('শুধু এডমিন'); return; } openMemoModal(); });
+  document.getElementById('addRowBtn')?.addEventListener('click',addNewRow);
+
+  // ========== History ==========
+  let currentHistoryTab='recent', currentFilter='all';
+  function renderHistory(){
+    let q=document.getElementById('historySearch')?.value.toLowerCase()||'';
+    let memos=loadMemos().filter(m=>currentHistoryTab==='recent'? (Date.now()-new Date(m.savedAt||m.date).getTime())/86400000<=92 : true);
+    if(currentFilter==='pending') memos=memos.filter(m=>m.delivery!=='done');
+    if(currentFilter==='done') memos=memos.filter(m=>m.delivery==='done');
+    if(q) memos=memos.filter(m=>m.name.toLowerCase().includes(q)||(m.phone||'').includes(q));
+    let container=document.getElementById('historyList');
+    if(!memos.length){ container.innerHTML='<div style="text-align:center; padding:30px;">কোনো মেমো নেই</div>'; return; }
+    container.innerHTML=memos.slice().reverse().map(m=>`<div class="history-card"><div><b>${m.memoNo}</b> — ${m.name} (${m.phone||'না'})</div><div>📅 ${m.date} | মোট: ${m.total} টাকা | ডেলিভারি: ${m.delivery==='done'?'✅ সম্পন্ন':'⏳ পেন্ডিং'}</div><div><button class="filter-btn" onclick="viewMemoDetail('${m.id}')">দেখুন</button> <button class="filter-btn" onclick="editMemoById('${m.id}')">সম্পাদনা</button> <button class="filter-btn" onclick="markDeliveredSimple('${m.id}')">ডেলিভারি সম্পন্ন</button> <button class="filter-btn" style="background:#dc3545;color:white;" onclick="deleteMemoById('${m.id}')">মুছুন</button></div></div>`).join('');
+  }
+  window.viewMemoDetail=function(id){ let m=loadMemos().find(x=>x.id===id); if(m){ document.getElementById('viewMemoContent').innerHTML=`<pre>${JSON.stringify(m,null,2)}</pre>`; openModal('viewMemoModal'); } };
+  window.editMemoById=function(id){ let m=loadMemos().find(x=>x.id===id); if(m){ closeModal('historyModal'); openMemoModal(m); } };
+  window.markDeliveredSimple=function(id){ let memos=loadMemos(); let m=memos.find(x=>x.id===id); if(m){ m.delivery='done'; saveMemos(memos); renderHistory(); } };
+  window.deleteMemoById=function(id){ if(confirm('মুছবেন?')){ saveMemos(loadMemos().filter(m=>m.id!==id)); renderHistory(); } };
+  document.getElementById('openHistoryBtn')?.addEventListener('click',()=>{ if(!isAdmin()){ alert('শুধু এডমিন'); return; } renderHistory(); openModal('historyModal'); });
+  document.getElementById('tabRecentBtn')?.addEventListener('click',()=>{ currentHistoryTab='recent'; renderHistory(); });
+  document.getElementById('tabOldBtn')?.addEventListener('click',()=>{ currentHistoryTab='old'; renderHistory(); });
+  document.getElementById('filterAllBtn')?.addEventListener('click',()=>{ currentFilter='all'; renderHistory(); });
+  document.getElementById('filterPendingBtn')?.addEventListener('click',()=>{ currentFilter='pending'; renderHistory(); });
+  document.getElementById('filterDoneBtn')?.addEventListener('click',()=>{ currentFilter='done'; renderHistory(); });
+  document.getElementById('historySearch')?.addEventListener('input',()=>renderHistory());
+
+  // ========== Customer Order ==========
+  function coUpdateTotal(){ let t=0; document.querySelectorAll('#coItemsTableBody tr').forEach(row=>{ let qty=parseInt(row.querySelector('.item-qty-input')?.value)||0, price=parseFloat(row.querySelector('.item-price-input')?.value)||0, line=qty*price; row.querySelector('.item-total').textContent=line; t+=line; }); document.getElementById('coGrandTotal').textContent=t; }
+  function coBuildRow(name='',svc='iron',qty=1,price=0){ let tr=document.createElement('tr'); let actualPrice=price||getDefaultPrice(name,svc); let line=qty*actualPrice; tr.innerHTML=`<td><input type="text" class="item-name-input" list="productDatalist" value="${name}" oninput="coUpdateRowPrice(this)"></td><td><select class="item-svc-select" onchange="coUpdateRowPrice(this)"><option value="iron" ${svc==='iron'?'selected':''}>আয়রন</option><option value="wash" ${svc==='wash'?'selected':''}>ওয়াশ</option><option value="dry" ${svc==='dry'?'selected':''}>ড্রাই ক্লিন</option></select></td><td><input type="number" class="item-qty-input" value="${qty}" oninput="coUpdateTotal()"></td><td><input type="number" class="item-price-input" value="${actualPrice}" oninput="coUpdateTotal()"></td><td class="item-total">${line}</td><td><button class="remove-item-btn" onclick="coRemoveRow(this)">✖</button></td>`; return tr; }
+  window.coUpdateRowPrice=function(el){ let row=el.closest('tr'); let name=row.querySelector('.item-name-input').value; let svc=row.querySelector('.item-svc-select').value; row.querySelector('.item-price-input').value=getDefaultPrice(name,svc); coUpdateTotal(); };
+  window.coRemoveRow=function(btn){ if(document.getElementById('coItemsTableBody').children.length>1) btn.closest('tr').remove(); coUpdateTotal(); };
+  function coAddNewRow(){ let svc=document.querySelector('#coServiceIron:checked')?'iron':document.querySelector('#coServiceWash:checked')?'wash':'iron'; document.getElementById('coItemsTableBody').appendChild(coBuildRow('',svc,1,10)); coUpdateTotal(); }
+  document.getElementById('coAddRowBtn')?.addEventListener('click',coAddNewRow);
+  window.submitCustomerOrderEnhanced=function(){
+    if(!isCustomer()){ openModal('authModal'); return; }
+    let items=[]; let total=0;
+    document.querySelectorAll('#coItemsTableBody tr').forEach(row=>{
+      let name=row.querySelector('.item-name-input')?.value.trim(); if(!name) return;
+      let svc=row.querySelector('.item-svc-select')?.value;
+      let qty=parseInt(row.querySelector('.item-qty-input')?.value)||0;
+      let price=parseFloat(row.querySelector('.item-price-input')?.value)||0;
+      items.push({name,svc,qty,price,total:qty*price}); total+=qty*price;
+    });
+    if(items.length===0){ alert('কমপক্ষে একটি আইটেম দিন'); return; }
+    let address=document.getElementById('co_address').value.trim();
+    if(!address){ alert('ঠিকানা দিন'); return; }
+    let note=document.getElementById('co_note').value;
+    let session=getSession();
+    let orders=getOrders();
+    orders.push({ id:'ord_'+Date.now(), userId:session.id, userName:session.name, userPhone:session.phone, items, total, address, note, status:'pending', date:new Date().toLocaleDateString('bn-BD'), createdAt:new Date().toISOString() });
+    saveOrders(orders);
+    alert('অর্ডার পাঠানো হয়েছে');
+    closeModal('customerOrderModal');
+  };
+  document.getElementById('customerOrderBtn')?.addEventListener('click',()=>{ if(!isCustomer()){ openModal('authModal'); return; } document.getElementById('coItemsTableBody').innerHTML=''; coAddNewRow(); document.getElementById('co_address').value=getSession()?.address||''; openModal('customerOrderModal'); });
+  document.getElementById('customerMyOrdersBtn')?.addEventListener('click',()=>{ if(!isCustomer()){ openModal('authModal'); return; } let orders=getOrders().filter(o=>o.userId===getSession().id).reverse(); document.getElementById('myOrdersList').innerHTML=orders.map(o=>`<div class="history-card"><div><b>${o.date}</b> | মোট: ${o.total} টাকা | স্থিতি: ${o.status}</div><div>${o.items.map(i=>i.name).join(', ')}</div><div>📍 ${o.address}</div>${o.status==='pending'? '<button onclick="cancelMyOrder(\''+o.id+'\')">বাতিল</button>':''}</div>`).join(''); openModal('myOrdersModal'); });
+  window.cancelMyOrder=function(id){ if(confirm('বাতিল?')){ let orders=getOrders().filter(o=>o.id!==id); saveOrders(orders); alert('বাতিল করা হয়েছে'); closeModal('myOrdersModal'); } };
+  // admin orders panel
+  function openAdminOrdersModal(){ let orders=getOrders().slice().reverse(); document.getElementById('adminOrdersList').innerHTML=orders.map(o=>`<div class="history-card"><b>${o.userName}</b> (${o.userPhone})<br>${o.date} | ${o.status}<br>আইটেম: ${o.items.map(i=>i.name).join(', ')}<br>মোট: ${o.total} টাকা<br><button onclick="adminConfirmOrder('${o.id}')">নিশ্চিত</button> <button onclick="adminDoneOrder('${o.id}')">ডেলিভারি সম্পন্ন</button> <button onclick="adminDeleteOrder('${o.id}')">মুছুন</button></div>`).join(''); openModal('adminOrdersModal'); }
+  window.adminConfirmOrder=function(id){ let orders=getOrders(); let o=orders.find(x=>x.id===id); if(o){ o.status='confirmed'; saveOrders(orders); openAdminOrdersModal(); } };
+  window.adminDoneOrder=function(id){ let orders=getOrders(); let o=orders.find(x=>x.id===id); if(o){ o.status='done'; saveOrders(orders); openAdminOrdersModal(); } };
+  window.adminDeleteOrder=function(id){ if(confirm('মুছবেন?')){ saveOrders(getOrders().filter(o=>o.id!==id)); openAdminOrdersModal(); } };
+  document.querySelectorAll('.modal').forEach(m=>{ m.addEventListener('click',function(e){ if(e.target===this) this.style.display='none'; }); });
   updateUI();
-}
-
-// ================================================================
-// ===== কাস্টমার অর্ডার সিস্টেম =====
-// ================================================================
-function getOrders() {
-  try { return JSON.parse(localStorage.getItem(ORDERS_KEY) || '[]'); } catch(e) { return []; }
-}
-function saveOrders(o) { localStorage.setItem(ORDERS_KEY, JSON.stringify(o)); }
-
-document.getElementById('customerOrderBtn').addEventListener('click', () => {
-  if (!isCustomer()) { openModal('authModal'); return; }
-  document.getElementById('co_details').value = '';
-  document.getElementById('co_note').value = '';
-  document.getElementById('co_iron').checked = false;
-  document.getElementById('co_wash').checked = false;
-  document.getElementById('co_dry').checked = false;
-  // ঠিকানা অটো ফিল
-  const s = getSession();
-  document.getElementById('co_address').value = s.address || '';
-  document.getElementById('orderMsg').style.display = 'none';
-  openModal('customerOrderModal');
-});
-
-document.getElementById('customerMyOrdersBtn').addEventListener('click', () => {
-  renderMyOrders();
-  openModal('myOrdersModal');
-});
-
-function submitCustomerOrder() {
-  const services = [];
-  if (document.getElementById('co_iron').checked) services.push('আয়রন');
-  if (document.getElementById('co_wash').checked) services.push('ওয়াশ');
-  if (document.getElementById('co_dry').checked) services.push('ড্রাই ক্লিন');
-  const details = document.getElementById('co_details').value.trim();
-  const address = document.getElementById('co_address').value.trim();
-  const note = document.getElementById('co_note').value.trim();
-
-  if (!services.length) return showMsg('orderMsg', '❌ কমপক্ষে একটি সার্ভিস নির্বাচন করুন', 'error');
-  if (!details) return showMsg('orderMsg', '❌ কাপড়ের বিবরণ দিন', 'error');
-  if (!address) return showMsg('orderMsg', '❌ ঠিকানা দিন', 'error');
-
-  const session = getSession();
-  const orders = getOrders();
-  const newOrder = {
-    id: 'ord_' + Date.now(),
-    userId: session.id,
-    userName: session.name,
-    userPhone: session.phone,
-    services,
-    details,
-    address,
-    note,
-    status: 'pending',
-    createdAt: new Date().toISOString(),
-    date: new Date().toLocaleDateString('bn-BD'),
-  };
-  orders.push(newOrder);
-  saveOrders(orders);
-  showMsg('orderMsg', '✅ অর্ডার পাঠানো হয়েছে! দোকানদার শীঘ্রই যোগাযোগ করবেন।', 'success');
-  setTimeout(() => closeModal('customerOrderModal'), 2000);
-}
-
-function renderMyOrders() {
-  const session = getSession();
-  const orders = getOrders().filter(o => o.userId === session.id).reverse();
-  const list = document.getElementById('myOrdersList');
-  if (!orders.length) {
-    list.innerHTML = '<div class="no-memo-msg">আপনার কোনো অর্ডার নেই।</div>';
-    return;
-  }
-  const statusLabel = {
-    pending: '<span class="customer-order-status-pending">⏳ পেন্ডিং</span>',
-    confirmed: '<span class="customer-order-status-confirmed">✅ নিশ্চিত</span>',
-    done: '<span class="customer-order-status-done">🎉 ডেলিভারি হয়েছে</span>',
-  };
-  list.innerHTML = orders.map(o => `
-    <div class="customer-order-card">
-      <div class="customer-order-card-header">
-        <span style="font-weight:bold;">${o.date}</span>
-        ${statusLabel[o.status] || ''}
-      </div>
-      <div style="font-size:0.88rem;color:#444;margin:4px 0;">সার্ভিস: ${o.services.join(', ')}</div>
-      <div style="font-size:0.88rem;color:#444;margin:4px 0;">কাপড়: ${o.details}</div>
-      <div style="font-size:0.88rem;color:#444;margin:4px 0;">ঠিকানা: ${o.address}</div>
-      ${o.note ? `<div style="font-size:0.82rem;color:#777;">নোট: ${o.note}</div>` : ''}
-      ${o.status === 'pending' ? `<button class="customer-order-cancel-btn" style="margin-top:8px;" onclick="cancelMyOrder('${o.id}')">❌ অর্ডার বাতিল করুন</button>` : ''}
-    </div>
-  `).join('');
-}
-
-function cancelMyOrder(id) {
-  if (!confirm('এই অর্ডার বাতিল করতে চান?')) return;
-  const orders = getOrders();
-  const idx = orders.findIndex(o => o.id === id);
-  if (idx !== -1) orders.splice(idx, 1);
-  saveOrders(orders);
-  renderMyOrders();
-}
-
-// ================================================================
-// ===== এডমিন অর্ডার পেনেল =====
-// ================================================================
-function openAdminOrdersModal() {
-  renderAdminOrders();
-  openModal('adminOrdersModal');
-}
-
-function renderAdminOrders() {
-  const orders = getOrders().slice().reverse();
-  const list = document.getElementById('adminOrdersList');
-  if (!orders.length) {
-    list.innerHTML = '<div class="no-memo-msg">কোনো অর্ডার নেই।</div>';
-    return;
-  }
-  const statusLabel = { pending: 'pending', confirmed: 'confirmed', done: 'done' };
-  list.innerHTML = orders.map(o => `
-    <div class="admin-order-card ${statusLabel[o.status]||''}">
-      <div class="admin-order-card-header">
-        <span class="admin-order-title">👤 ${o.userName} | 📞 ${o.userPhone}</span>
-        ${o.status==='pending'?'<span class="customer-order-status-pending">⏳ নতুন অর্ডার</span>':
-          o.status==='confirmed'?'<span class="customer-order-status-confirmed">✅ নিশ্চিত</span>':
-          '<span class="customer-order-status-done">🎉 ডেলিভারি</span>'}
-      </div>
-      <div class="admin-order-meta">📅 ${o.date} | সার্ভিস: ${o.services.join(', ')}</div>
-      <div class="admin-order-meta">👕 ${o.details}</div>
-      <div class="admin-order-meta">📍 ${o.address}</div>
-      ${o.note ? `<div class="admin-order-meta" style="color:#888;">📝 ${o.note}</div>` : ''}
-      <div class="admin-order-actions">
-        ${o.status==='pending'?`<button class="btn-sm btn-confirm" onclick="adminConfirmOrder('${o.id}')">✅ নিশ্চিত করুন</button>`:''}
-        ${o.status==='confirmed'?`<button class="btn-sm btn-done" onclick="adminDoneOrder('${o.id}')">🎉 ডেলিভারি দেওয়া হয়েছে</button>`:''}
-        <button class="btn-sm btn-make-memo" onclick="makeMemoFromOrder('${o.id}')">🧾 মেমো তৈরি করুন</button>
-        <button class="btn-sm btn-delete" onclick="adminDeleteOrder('${o.id}')">🗑 মুছুন</button>
-      </div>
-    </div>
-  `).join('');
-}
-
-function adminConfirmOrder(id) {
-  const orders = getOrders();
-  const o = orders.find(x => x.id === id);
-  if (o) { o.status = 'confirmed'; saveOrders(orders); renderAdminOrders(); updateNewOrderBadge(); }
-}
-function adminDoneOrder(id) {
-  const orders = getOrders();
-  const o = orders.find(x => x.id === id);
-  if (o) { o.status = 'done'; saveOrders(orders); renderAdminOrders(); updateNewOrderBadge(); }
-}
-function adminDeleteOrder(id) {
-  if (!confirm('এই অর্ডার মুছতে চান?')) return;
-  saveOrders(getOrders().filter(o => o.id !== id));
-  renderAdminOrders(); updateNewOrderBadge();
-}
-function makeMemoFromOrder(id) {
-  const o = getOrders().find(x => x.id === id);
-  if (!o) return;
-  closeModal('adminOrdersModal');
-  openMemoModal(null, o);
-}
-
-// ================================================================
-// ===== প্রাইস ডাটা =====
-// ================================================================
-const priceDB = {
-  "শার্ট":    { iron: 10, wash: 50, dry: 50 },
-  "প্যান্ট":   { iron: 10, wash: 50, dry: 50 },
-  "পাঞ্জাবি": { iron: 10, wash: 50, dry: 60 },
-  "কামিজ":    { iron: 10, wash: 50, dry: 60 },
-  "ফতুয়া":   { iron: 10, wash: 50, dry: 50 },
-  "কোট":     { iron: 50, wash: 250, dry: 250 },
-  "সুট":     { iron: 50, wash: 250, dry: 250 },
-  "ব্লেজার":  { iron: 50, wash: 200, dry: 200 },
-  "কম্বল":   { iron: 30, wash: 350, dry: 400 },
-  "শাড়ি":   { iron: 30, wash: 100, dry: 150 },
-  "বেডশিট":  { iron: 20, wash: 100, dry: 120 },
-  "তোয়ালে":  { iron: 10, wash: 40,  dry: 40  },
-  "শাল":     { iron: 20, wash: 80,  dry: 100 },
-  "স্যালোয়ার": { iron: 10, wash: 50, dry: 60 },
-  "ওড়না":   { iron: 10, wash: 30,  dry: 40  },
-  "পায়জামা": { iron: 10, wash: 40,  dry: 40  },
-};
-
-function getDefaultPrice(name, serviceType) {
-  const lower = (name || "").trim();
-  const row = priceDB[lower];
-  if (!row) return 10;
-  if (serviceType === 'wash') return row.wash;
-  if (serviceType === 'dry')  return row.dry;
-  return row.iron;
-}
-
-// ================================================================
-// ===== স্টোরেজ =====
-// ================================================================
-function loadMemos() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch(e) { return []; }
-}
-function saveMemos(memos) { localStorage.setItem(STORAGE_KEY, JSON.stringify(memos)); }
-function isRecent(memo) {
-  const d = new Date(memo.savedAt || memo.date);
-  return (Date.now() - d.getTime()) / (1000*60*60*24) <= 92;
-}
-
-let memoCounter = parseInt(localStorage.getItem('loundry_memo_counter') || '1000');
-function nextMemoNumber() {
-  memoCounter++;
-  localStorage.setItem('loundry_memo_counter', String(memoCounter));
-  return 'MEMO-' + memoCounter;
-}
-
-let editingMemoId = null;
-let deliveryStatus = 'pending';
-
-window.updateTotal = function() {
-  let total = 0;
-  document.querySelectorAll('#itemsTableBody tr').forEach(row => {
-    const qty   = parseInt(row.querySelector('.item-qty-input')?.value) || 0;
-    const price = parseFloat(row.querySelector('.item-price-input')?.value) || 0;
-    const span  = row.querySelector('.item-total');
-    const line  = qty * price;
-    if(span) span.textContent = line;
-    total += line;
-  });
-  document.getElementById('grandTotal').textContent = total;
-};
-
-function getActiveServices() {
-  const s = [];
-  if (document.getElementById('serviceIron').checked) s.push('iron');
-  if (document.getElementById('serviceWash').checked) s.push('wash');
-  if (document.getElementById('serviceDryClean').checked) s.push('dry');
-  return s;
-}
-function serviceLabel(s) {
-  if (s === 'iron') return 'আয়রন';
-  if (s === 'wash') return 'ওয়াশ';
-  if (s === 'dry')  return 'ড্রাই ক্লিন';
-  return s;
-}
-
-['serviceIron','serviceWash','serviceDryClean'].forEach(id => {
-  document.getElementById(id).addEventListener('change', () => {
-    document.getElementById('lbl-iron').classList.toggle('active-iron', document.getElementById('serviceIron').checked);
-    document.getElementById('lbl-wash').classList.toggle('active-wash', document.getElementById('serviceWash').checked);
-    document.getElementById('lbl-dry').classList.toggle('active-dry', document.getElementById('serviceDryClean').checked);
-  });
-});
-
-window.removeRow = function(btn) {
-  const tbody = document.getElementById('itemsTableBody');
-  if(tbody.children.length > 1) { btn.closest('tr').remove(); updateTotal(); }
-  else alert("অন্তত একটি আইটেম রাখতে হবে!");
-};
-
-function buildRow(name='', svc='iron', qty=1, price=0, setAutoPrice=true) {
-  const tr = document.createElement('tr');
-  const autoPrice = setAutoPrice ? getDefaultPrice(name, svc) : price;
-  const line = qty * autoPrice;
-  tr.innerHTML = `
-    <td><input type="text" class="item-name-input" list="productDatalist" value="${name}" placeholder="কাপড়" style="width:95px;" oninput="onNameChange(this)"></td>
-    <td>
-      <select class="item-svc-select" style="width:80px;font-size:0.78rem;border:1px solid #ccc;border-radius:3px;padding:2px;" onchange="onSvcChange(this)">
-        <option value="iron" ${svc==='iron'?'selected':''}>আয়রন</option>
-        <option value="wash" ${svc==='wash'?'selected':''}>ওয়াশ</option>
-        <option value="dry"  ${svc==='dry'?'selected':''}>ড্রাই ক্লিন</option>
-      </select>
-    </td>
-    <td><input type="number" class="item-qty-input" value="${qty}" style="width:45px;" oninput="updateTotal()" min="1"></td>
-    <td><input type="number" class="item-price-input" value="${setAutoPrice?autoPrice:price}" style="width:55px;" oninput="updateTotal()"></td>
-    <td class="item-total">${setAutoPrice?line:qty*price}</td>
-    <td><button class="remove-item-btn" onclick="removeRow(this)">✖</button></td>
-  `;
-  return tr;
-}
-
-window.onNameChange = function(input) {
-  const row = input.closest('tr');
-  const svc = row.querySelector('.item-svc-select').value;
-  const priceInput = row.querySelector('.item-price-input');
-  priceInput.value = getDefaultPrice(input.value, svc);
-  updateTotal();
-};
-window.onSvcChange = function(sel) {
-  const row = sel.closest('tr');
-  const name = row.querySelector('.item-name-input').value;
-  const priceInput = row.querySelector('.item-price-input');
-  priceInput.value = getDefaultPrice(name, sel.value);
-  updateTotal();
-};
-
-function addNewRow() {
-  const svcs = getActiveServices();
-  const svc = svcs.length ? svcs[0] : 'iron';
-  document.getElementById('itemsTableBody').appendChild(buildRow('', svc, 1, 10, true));
-  updateTotal();
-}
-
-// অর্ডার থেকে মেমো খুলবে
-function openMemoModal(editMemo=null, fromOrder=null) {
-  editingMemoId = null;
-  deliveryStatus = 'pending';
-
-  document.getElementById('memoDate').textContent = new Date().toLocaleDateString('bn-BD');
-  document.getElementById('customerName').value  = '';
-  document.getElementById('customerPhone').value = '';
-  document.getElementById('serviceIron').checked = false;
-  document.getElementById('serviceWash').checked = false;
-  document.getElementById('serviceDryClean').checked = false;
-  ['lbl-iron','lbl-wash','lbl-dry'].forEach(id => { document.getElementById(id).className = ''; });
-  document.getElementById('deliveryBadge').className = 'delivery-badge-pending';
-  document.getElementById('deliveryBadge').textContent = '⏳ পেন্ডিং';
-
-  const tbody = document.getElementById('itemsTableBody');
-  tbody.innerHTML = '';
-
-  if (editMemo) {
-    editingMemoId = editMemo.id;
-    document.getElementById('memoNumber').textContent = editMemo.memoNo;
-    document.getElementById('memoDate').textContent = editMemo.date;
-    document.getElementById('customerName').value  = editMemo.name;
-    document.getElementById('customerPhone').value = editMemo.phone;
-    document.getElementById('serviceIron').checked = editMemo.services.includes('iron');
-    document.getElementById('serviceWash').checked = editMemo.services.includes('wash');
-    document.getElementById('serviceDryClean').checked = editMemo.services.includes('dry');
-    document.getElementById('lbl-iron').classList.toggle('active-iron', editMemo.services.includes('iron'));
-    document.getElementById('lbl-wash').classList.toggle('active-wash', editMemo.services.includes('wash'));
-    document.getElementById('lbl-dry').classList.toggle('active-dry', editMemo.services.includes('dry'));
-    deliveryStatus = editMemo.delivery;
-    updateDeliveryUI();
-    editMemo.items.forEach(it => tbody.appendChild(buildRow(it.name, it.svc, it.qty, it.price, false)));
-  } else if (fromOrder) {
-    // অর্ডার থেকে অটো ফিল
-    document.getElementById('memoNumber').textContent = nextMemoNumber();
-    document.getElementById('customerName').value = fromOrder.userName;
-    document.getElementById('customerPhone').value = fromOrder.userPhone;
-    if (fromOrder.services.includes('আয়রন')) { document.getElementById('serviceIron').checked = true; document.getElementById('lbl-iron').classList.add('active-iron'); }
-    if (fromOrder.services.includes('ওয়াশ')) { document.getElementById('serviceWash').checked = true; document.getElementById('lbl-wash').classList.add('active-wash'); }
-    if (fromOrder.services.includes('ড্রাই ক্লিন')) { document.getElementById('serviceDryClean').checked = true; document.getElementById('lbl-dry').classList.add('active-dry'); }
-    tbody.appendChild(buildRow('শার্ট', 'iron', 1, 10, false));
-  } else {
-    document.getElementById('memoNumber').textContent = nextMemoNumber();
-    tbody.appendChild(buildRow('শার্ট', 'iron', 1, 10, false));
-  }
-
-  updateTotal();
-  openModal('cashMemoModal');
-}
-
-function updateDeliveryUI() {
-  const badge = document.getElementById('deliveryBadge');
-  const btn   = document.getElementById('toggleDeliveryBtn');
-  if (deliveryStatus === 'done') {
-    badge.className = 'delivery-badge-done';
-    badge.textContent = '✅ ডেলিভারি দেওয়া হয়েছে';
-    btn.textContent = '↩ পেন্ডিং করুন';
-  } else {
-    badge.className = 'delivery-badge-pending';
-    badge.textContent = '⏳ পেন্ডিং';
-    btn.textContent = '✔ ডেলিভারি দেওয়া হয়েছে';
-  }
-}
-
-document.getElementById('toggleDeliveryBtn').addEventListener('click', () => {
-  deliveryStatus = (deliveryStatus === 'done') ? 'pending' : 'done';
-  updateDeliveryUI();
-});
-
-function collectMemoData() {
-  const items = [];
-  document.querySelectorAll('#itemsTableBody tr').forEach(row => {
-    const name  = row.querySelector('.item-name-input')?.value || '';
-    const svc   = row.querySelector('.item-svc-select')?.value || 'iron';
-    const qty   = parseInt(row.querySelector('.item-qty-input')?.value) || 0;
-    const price = parseFloat(row.querySelector('.item-price-input')?.value) || 0;
-    if(name) items.push({ name, svc, qty, price, total: qty*price });
-  });
-  const services = [];
-  if (document.getElementById('serviceIron').checked) services.push('iron');
-  if (document.getElementById('serviceWash').checked) services.push('wash');
-  if (document.getElementById('serviceDryClean').checked) services.push('dry');
-  return {
-    id: editingMemoId || ('m_'+Date.now()),
-    memoNo: document.getElementById('memoNumber').textContent,
-    date: document.getElementById('memoDate').textContent,
-    savedAt: new Date().toISOString(),
-    name: document.getElementById('customerName').value || 'নাম নেই',
-    phone: document.getElementById('customerPhone').value || '',
-    services, delivery: deliveryStatus, items,
-    total: parseInt(document.getElementById('grandTotal').textContent) || 0,
-  };
-}
-
-document.getElementById('saveMemoBtn').addEventListener('click', () => {
-  const data = collectMemoData();
-  if (!data.name || data.name === 'নাম নেই') { alert('গ্রাহকের নাম দিন!'); return; }
-  const memos = loadMemos();
-  if (editingMemoId) {
-    const idx = memos.findIndex(m => m.id === editingMemoId);
-    if (idx !== -1) memos[idx] = data; else memos.push(data);
-  } else { memos.push(data); }
-  saveMemos(memos);
-  alert('✅ মেমো সংরক্ষণ হয়েছে!');
-  closeModal('cashMemoModal');
-});
-
-function buildMemoText(d) {
-  const svcs = (d.services||[]).map(serviceLabel).join(', ') || '—';
-  let itemsText = '';
-  (d.items||[]).forEach(it => { itemsText += `${it.name} (${serviceLabel(it.svc)}) x${it.qty} = ${it.total} টাকা\n`; });
-  return `🧾 *সেবা লন্ড্রি এন্ড ড্রাই ক্লিনার্স* 🧾\n━━━━━━━━━━━━━━━━━━━\nমেমো: ${d.memoNo} | তারিখ: ${d.date}\nগ্রাহক: ${d.name}\nফোন: ${d.phone||'—'}\nসার্ভিস: ${svcs}\n━━━━━━━━━━━━━━━━━━━\n${itemsText}━━━━━━━━━━━━━━━━━━━\n*মোট: ${d.total} টাকা*\nডেলিভারি: ${d.delivery==='done'?'✅ দেওয়া হয়েছে':'⏳ পেন্ডিং'}\n🚚 ফ্রি ডেলিভারি (৫+ পিস)\n📍 নয়ানগর, Sontek Main Rd, Dhaka\n🙏 ধন্যবাদ!`;
-}
-
-function printMemo() { doPrint(collectMemoData()); }
-function doPrint(d) {
-  const svcs = (d.services||[]).map(serviceLabel).join(' | ') || '—';
-  let rows = '';
-  (d.items||[]).forEach(it => { rows += `<tr><td>${it.name}</td><td>${serviceLabel(it.svc)}</td><td>${it.qty}</td><td>${it.price}</td><td>${it.total}</td></tr>`; });
-  const w = window.open('','_blank');
-  w.document.write(`<html><head><title>ক্যাশ মেমো</title>
-  <style>body{font-family:monospace;padding:20px;max-width:450px;margin:auto;}
-  table{width:100%;border-collapse:collapse;}th,td{border:1px solid #000;padding:5px;text-align:center;}th{background:#eee;}
-  .hd{text-align:center;border-bottom:2px solid #000;padding-bottom:8px;margin-bottom:12px;}
-  .row{display:flex;justify-content:space-between;margin:6px 0;border-bottom:1px dashed #ccc;}
-  .total{font-weight:bold;font-size:1.2em;margin-top:10px;border-top:2px solid #000;padding-top:8px;}
-  .ft{text-align:center;font-size:0.75em;margin-top:14px;border-top:1px dashed #ccc;padding-top:8px;}
-  </style></head><body>
-  <div class="hd"><b>সেবা লন্ড্রি এন্ড ড্রাই ক্লিনার্স</b><br><small>নয়ানগর, Sontek Main Rd, Dhaka</small></div>
-  <div class="row"><span>মেমো নং:</span><span>${d.memoNo}</span></div>
-  <div class="row"><span>তারিখ:</span><span>${d.date}</span></div>
-  <div class="row"><span>গ্রাহক:</span><span>${d.name}</span></div>
-  <div class="row"><span>ফোন:</span><span>${d.phone||'—'}</span></div>
-  <div class="row"><span>সার্ভিস:</span><span>${svcs}</span></div>
-  <div class="row"><span>ডেলিভারি:</span><span>${d.delivery==='done'?'✅ দেওয়া হয়েছে':'⏳ পেন্ডিং'}</span></div>
-  <table style="margin-top:10px;"><thead><tr><th>কাপড়</th><th>সার্ভিস</th><th>পিস</th><th>দর</th><th>মোট</th></tr></thead>
-  <tbody>${rows}</tbody></table>
-  <div class="total" style="display:flex;justify-content:space-between;"><span>মোট মূল্য:</span><span>${d.total} টাকা</span></div>
-  <div class="ft">★ ফ্রি পিকআপ ও ডেলিভারি (৫ পিসের বেশি) ★ ধন্যবাদ!</div>
-  </body></html>`);
-  w.document.close(); w.print();
-}
-
-document.getElementById('printMemoBtn').addEventListener('click', printMemo);
-document.getElementById('whatsappMemoBtn').addEventListener('click', () => {
-  const d = collectMemoData();
-  window.open('https://wa.me/8801714391128?text='+encodeURIComponent(buildMemoText(d)),'_blank');
-});
-document.getElementById('closeMemoBtn').addEventListener('click', () => closeModal('cashMemoModal'));
-document.getElementById('openCashMemoBtn').addEventListener('click', () => {
-  if (!isAdmin()) { alert('শুধু এডমিন এই ফিচার ব্যবহার করতে পারবেন।'); return; }
-  openMemoModal();
-});
-document.getElementById('addRowBtn').addEventListener('click', addNewRow);
-
-// ===== ইতিহাস =====
-let currentTab = 'recent';
-let currentFilter = 'all';
-
-function switchTab(tab) {
-  currentTab = tab;
-  document.getElementById('tabRecent').classList.toggle('active', tab==='recent');
-  document.getElementById('tabOld').classList.toggle('active', tab==='old');
-  document.getElementById('historyNote').textContent = tab==='recent'
-    ? 'সর্বশেষ ৩ মাসের মেমো দেখাচ্ছে।'
-    : 'তিন মাসের পুরনো মেমো (লাইফটাইম সংরক্ষণ)।';
-  renderHistory();
-}
-
-function setFilter(f) {
-  currentFilter = f;
-  document.getElementById('filterAll').className = 'filter-btn' + (f==='all'?' active-all':'');
-  document.getElementById('filterPending').className = 'filter-btn' + (f==='pending'?' active-pending':'');
-  document.getElementById('filterDone').className = 'filter-btn' + (f==='done'?' active-done':'');
-  renderHistory();
-}
-
-function renderHistory() {
-  const q = (document.getElementById('historySearch').value || '').trim().toLowerCase();
-  let memos = loadMemos();
-  memos = memos.filter(m => currentTab==='recent' ? isRecent(m) : !isRecent(m));
-  if (currentFilter === 'pending') memos = memos.filter(m => m.delivery !== 'done');
-  if (currentFilter === 'done')    memos = memos.filter(m => m.delivery === 'done');
-  if (q) memos = memos.filter(m => m.name.toLowerCase().includes(q) || (m.phone||'').includes(q));
-  memos = memos.slice().reverse();
-
-  const list = document.getElementById('historyList');
-  if (!memos.length) { list.innerHTML = '<div class="no-memo-msg">কোনো মেমো পাওয়া যায়নি।</div>'; return; }
-
-  list.innerHTML = memos.map(m => {
-    const svcs = (m.services||[]).map(serviceLabel).join(', ');
-    const badge = m.delivery==='done'
-      ? '<span class="delivery-badge-done">✅ ডেলিভারি</span>'
-      : '<span class="delivery-badge-pending">⏳ পেন্ডিং</span>';
-    const deliverBtnHtml = m.delivery !== 'done'
-      ? `<button class="btn-sm btn-deliver" onclick="markDelivered('${m.id}')">✔ ডেলিভারি দেওয়া হয়েছে</button>`
-      : `<button class="btn-sm" style="background:#aaa;color:white;" onclick="markPending('${m.id}')">↩ পেন্ডিং</button>`;
-    return `<div class="memo-card">
-      <div class="memo-card-header">
-        <div><span class="memo-card-title">${m.memoNo}</span> — ${m.name}${m.phone ? ` <span style="color:#555;"> | 📞 ${m.phone}</span>` : ''}</div>
-        ${badge}
-      </div>
-      <div class="memo-card-meta">📅 ${m.date} &nbsp;|&nbsp; সার্ভিস: ${svcs||'—'} &nbsp;|&nbsp; মোট: <b>${m.total} টাকা</b></div>
-      <div class="memo-card-actions">
-        <button class="btn-sm btn-view" onclick="viewMemo('${m.id}')">👁 দেখুন</button>
-        <button class="btn-sm btn-view" style="background:#3d5a80;" onclick="editMemo('${m.id}')">✏️ আপডেট</button>
-        ${deliverBtnHtml}
-        <button class="btn-sm btn-delete" onclick="deleteMemo('${m.id}')">🗑 মুছুন</button>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function markDelivered(id) {
-  const memos = loadMemos(); const m = memos.find(x => x.id===id);
-  if(m) { m.delivery='done'; saveMemos(memos); renderHistory(); }
-}
-function markPending(id) {
-  const memos = loadMemos(); const m = memos.find(x => x.id===id);
-  if(m) { m.delivery='pending'; saveMemos(memos); renderHistory(); }
-}
-function deleteMemo(id) {
-  if(!confirm('এই মেমো মুছতে চান?')) return;
-  saveMemos(loadMemos().filter(m => m.id!==id)); renderHistory();
-}
-function editMemo(id) {
-  const m = loadMemos().find(x => x.id===id);
-  if(!m) return;
-  closeModal('historyModal');
-  openMemoModal(m);
-}
-function viewMemo(id) {
-  const m = loadMemos().find(x => x.id===id);
-  if(!m) return;
-  const svcs = (m.services||[]).map(serviceLabel).join(' | ') || '—';
-  let rows = (m.items||[]).map(it => `<tr><td>${it.name}</td><td>${serviceLabel(it.svc)}</td><td>${it.qty}</td><td>${it.price}</td><td>${it.total}</td></tr>`).join('');
-  document.getElementById('viewMemoContent').innerHTML = `
-    <div class="memo-header"><div class="shop-name-memo">🧾 সেবা লন্ড্রি এন্ড ড্রাই ক্লিনার্স</div>
-    <div style="font-size:0.78rem;">নয়ানগর, Sontek Main Rd, Dhaka</div></div>
-    <div class="memo-info-row"><span class="memo-label">মেমো নং:</span><span>${m.memoNo}</span></div>
-    <div class="memo-info-row"><span class="memo-label">তারিখ:</span><span>${m.date}</span></div>
-    <div class="memo-info-row"><span class="memo-label">গ্রাহক:</span><span>${m.name}</span></div>
-    <div class="memo-info-row"><span class="memo-label">ফোন:</span><span>${m.phone||'—'}</span></div>
-    <div class="memo-info-row"><span class="memo-label">সার্ভিস:</span><span>${svcs}</span></div>
-    <div class="memo-info-row"><span class="memo-label">ডেলিভারি:</span><span>${m.delivery==='done'?'✅ দেওয়া হয়েছে':'⏳ পেন্ডিং'}</span></div>
-    <table class="items-table" style="margin-top:10px;">
-      <thead><tr><th>কাপড়</th><th>সার্ভিস</th><th>পিস</th><th>দর</th><th>মোট</th></tr></thead>
-      <tbody>${rows}</tbody>
-    </table>
-    <div class="total-row"><span>মোট মূল্য:</span><span>${m.total} টাকা</span></div>
-    <div class="memo-footer">★ ফ্রি পিকআপ ও ডেলিভারি (৫ পিসের বেশি) ★ ধন্যবাদ!</div>
-  `;
-  window._viewMemoData = m;
-  openModal('viewMemoModal');
-}
-window.printViewMemo = function() { if(window._viewMemoData) doPrint(window._viewMemoData); };
-
-document.getElementById('openHistoryBtn').addEventListener('click', () => {
-  if (!isAdmin()) { alert('শুধু এডমিন এই ফিচার ব্যবহার করতে পারবেন।'); return; }
-  renderHistory();
-  openModal('historyModal');
-});
-
-// মডালের বাইরে ক্লিক করলে বন্ধ
-['cashMemoModal','historyModal','viewMemoModal','authModal','customerOrderModal','myOrdersModal','adminOrdersModal'].forEach(id => {
-  document.getElementById(id).addEventListener('click', function(e) {
-    if(e.target === this) this.style.display='none';
-  });
-});
-
-// ===== পেজ লোড =====
-updateUI();
+  if(document.getElementById('coItemsTableBody')) coAddNewRow();
 </script>
+<datalist id="productDatalist"><option value="শার্ট"><option value="প্যান্ট"><option value="পাঞ্জাবি"><option value="কামিজ"><option value="কম্বল"><option value="কোট"><option value="শাড়ি"><option value="তোয়ালে"></datalist>
 </body>
 </html>
